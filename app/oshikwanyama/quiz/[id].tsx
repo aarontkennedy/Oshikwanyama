@@ -18,7 +18,10 @@ export default function QuizScreen() {
   const [localScore, setLocalScore] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [input, setInput] = useState("");
+  const [matchingAnswers, setMatchingAnswers] = useState<string[]>([]);
+  const [orderingInput, setOrderingInput] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [lastCorrect, setLastCorrect] = useState<boolean | null>(null);
   const [finished, setFinished] = useState(false);
 
   if (!lesson) {
@@ -31,6 +34,17 @@ export default function QuizScreen() {
 
   const question = lesson.questions[index];
 
+  // Ensure matchingAnswers is sized for matching questions
+  React.useEffect(() => {
+    if (question?.type === "matching") {
+      const pairs = (question as any).pairs || [];
+      setMatchingAnswers((prev) => {
+        if (prev.length === pairs.length) return prev;
+        return Array(pairs.length).fill("");
+      });
+    }
+  }, [index, question]);
+
   const handleSubmit = () => {
     if (submitted) return;
 
@@ -42,12 +56,31 @@ export default function QuizScreen() {
       correct =
         input.trim().toLowerCase() ===
         (question as any).answer.trim().toLowerCase();
+    } else if (question.type === "matching") {
+      const pairs = (question as any).pairs || [];
+      const allMatch = pairs.every((p: any, i: number) => {
+        const given = (matchingAnswers[i] || "").trim().toLowerCase();
+        const expected = (p.meaning || "").trim().toLowerCase();
+        return given === expected;
+      });
+      correct = allMatch;
+    } else if (question.type === "ordering") {
+      const items: string[] = (question as any).items || [];
+      const normalizedExpected = items
+        .map((s) => s.trim().toLowerCase())
+        .join(",");
+      const normalizedGiven = orderingInput
+        .split(",")
+        .map((s) => s.trim().toLowerCase())
+        .join(",");
+      correct = normalizedExpected === normalizedGiven;
     } else {
-      // For other types we won't attempt automatic grading here
+      // unknown question type
       correct = false;
     }
 
     if (correct) setLocalScore((s) => s + 10);
+    setLastCorrect(correct);
     setSubmitted(true);
   };
 
@@ -56,6 +89,9 @@ export default function QuizScreen() {
     setSubmitted(false);
     setSelected(null);
     setInput("");
+    setMatchingAnswers([]);
+    setOrderingInput("");
+    setLastCorrect(null);
 
     if (next >= lesson.questions.length) {
       // finished
@@ -108,6 +144,35 @@ export default function QuizScreen() {
             />
           )}
 
+          {question.type === "matching" && (
+            <ThemedView>
+              {((question as any).pairs || []).map((p: any, i: number) => (
+                <TextInput
+                  key={p.word + i}
+                  style={styles.input}
+                  placeholder={`Match meaning for ${p.word}`}
+                  value={matchingAnswers[i] || ""}
+                  onChangeText={(text) =>
+                    setMatchingAnswers((prev) => {
+                      const copy = [...prev];
+                      copy[i] = text;
+                      return copy;
+                    })
+                  }
+                />
+              ))}
+            </ThemedView>
+          )}
+
+          {question.type === "ordering" && (
+            <TextInput
+              style={styles.input}
+              value={orderingInput}
+              placeholder="Enter ordered items, comma separated"
+              onChangeText={setOrderingInput}
+            />
+          )}
+
           <ThemedView style={styles.controls}>
             {!submitted ? (
               <Pressable onPress={handleSubmit} style={styles.button}>
@@ -116,15 +181,14 @@ export default function QuizScreen() {
             ) : (
               <ThemedView>
                 <ThemedText>
-                  {question.type === "multiple-choice"
-                    ? (question as any).correct === selected
-                      ? "Correct!"
-                      : `Incorrect — answer: ${(question as any).correct}`
-                    : question.type === "fill-blank"
-                    ? input.trim().toLowerCase() ===
-                      (question as any).answer.trim().toLowerCase()
-                      ? "Correct!"
-                      : `Incorrect — answer: ${(question as any).answer}`
+                  {lastCorrect === true
+                    ? "Correct!"
+                    : lastCorrect === false
+                    ? question.type === "multiple-choice"
+                      ? `Incorrect — answer: ${(question as any).correct}`
+                      : question.type === "fill-blank"
+                      ? `Incorrect — answer: ${(question as any).answer}`
+                      : "Incorrect"
                     : "Answered"}
                 </ThemedText>
                 <Pressable onPress={handleNext} style={styles.button}>
