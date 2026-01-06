@@ -48,3 +48,112 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+---
+
+## Development (local) 🔧
+
+- Install dependencies:
+
+  ```bash
+  npm install
+  ```
+
+- TypeScript type-check:
+
+  ```bash
+  npx tsc --noEmit
+  ```
+
+- Lint:
+
+  ```bash
+  npm run lint
+  ```
+
+- Start the dev server / Metro bundler:
+
+  ```bash
+  npm start
+  # or
+  npx expo start
+  ```
+
+- Open on simulator or device:
+
+  - iOS simulator (macOS/Xcode): `npm run ios`
+  - Android emulator: `npm run android`
+  - Web: `npm run web`
+
+- Native dev clients and development builds (EAS):
+
+  - Install the EAS CLI: `npm install -g eas-cli`
+  - Log in: `eas login`
+  - Create a development build (install on device/emulator):
+
+    ```bash
+    eas build --profile development --platform ios
+    eas build --profile development --platform android
+    ```
+
+  See https://docs.expo.dev/development/introduction/ for details.
+
+## Testing ✅
+
+- Run the full test suite (Jest + React Native Testing Library):
+
+  ```bash
+  npm test
+  ```
+
+- Run a single test file:
+
+  ```bash
+  npm test -- -i __tests__/your.test.tsx
+  ```
+
+- Run tests in watch mode:
+
+  ```bash
+  npm test -- --watch
+  ```
+
+- If you want to type-check only:
+
+  ```bash
+  npx tsc --noEmit
+  ```
+
+## Deployment 🚀
+
+- Over-the-air updates (Expo Publish):
+
+  ```bash
+  expo login
+  expo publish
+  ```
+
+- Production App Store / Play Store builds (EAS):
+
+  - Configure credentials and `eas.json` as needed
+  - Build production artifacts:
+
+    ```bash
+    eas build --platform ios --profile production
+    eas build --platform android --profile production
+    ```
+
+  - Submit builds to stores:
+
+    ```bash
+    eas submit -p ios --latest
+    eas submit -p android --latest
+    ```
+
+  See https://docs.expo.dev/eas for all setup details (Apple / Google credentials, provisioning, and store submission).
+
+## Notes & resources 💡
+
+- The Oshikwanyama learning pages live under `app/oshikwanyama`.
+- Reset starter project: `npm run reset-project`.
+- CI tip: run `npm ci && npm test && npx tsc --noEmit` in CI to verify install, tests, and types.
