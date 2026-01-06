@@ -1,6 +1,6 @@
+import { Section } from "@/types/oshikwanyama";
 import { useState } from "react";
 import { default as proverbs } from "../../../../data/oshikwanyama/proverbs.json";
-import { Section } from "@/types/oshikwanyama";
 import PageTitle from "../../PageTitle";
 
 const ProverbsLesson = ({
