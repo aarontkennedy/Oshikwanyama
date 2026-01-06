@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.quiz-question {
+    &__prompt {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__question-tracker {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  &__question-result-wrapper {
+    text-align: center;
+    margin: 20px auto;
+  }
+  &__navigation-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+  }
+}

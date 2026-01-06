@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.cta-button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  color: white;
+  background-color: $greenSecondary;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $green;
+  }
+
+  &:disabled {
+    background-color: rgb(0, 149, 67, 0.5);
+    cursor: initial;
+  }
+
+  &__title {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30px;
+    line-height: 34px;
+    margin-right: 10px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  &__sub-title {
+    vertical-align: sub;
+    font-size: 12px;
+    line-height: 12px;
+    margin-right: 10px;
+    align-self: flex-end;
+    font-size: 12px;
+    line-height: 12px;
+  }
+}

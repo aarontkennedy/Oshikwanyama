@@ -1,0 +1,14 @@
+@import "../_variables.scss";
+
+.vocab-table {
+  margin: 10px auto;
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 0;
+
+  &__english,
+  &__kwanyama {
+    padding: 5px 10px;
+    border: 1px solid black;
+  }
+}

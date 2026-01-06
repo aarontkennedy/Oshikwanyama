@@ -1,0 +1,42 @@
+@import "../../../variables";
+
+.multiple-choice {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    all: unset;
+    color: white;
+    background-color: $blueTertiary;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    text-align: center;
+    font-size: 24px;
+
+    &:hover {
+      background-color: $blueSecondary;
+    }
+    &:disabled {
+      background-color: rgb(0, 53, 128, 0.5);
+      cursor: initial;
+    }
+
+    &.multiple-choice__correct {
+      background-color: $blue;
+    }
+    &.multiple-choice__incorrect {
+      background-color: $red;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .multiple-choice {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

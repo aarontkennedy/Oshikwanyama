@@ -1,0 +1,39 @@
+@import "../../variables";
+
+.lesson-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+
+  .lesson {
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__border {
+      border: thin solid $green;
+
+      &--completed {
+        border: thin solid $yellow;
+      }
+    }
+
+    &__title {
+      text-align: center;
+    }
+    &__description {
+    }
+    &__excercises {
+      text-align: right;
+    }
+
+    &__cta-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}

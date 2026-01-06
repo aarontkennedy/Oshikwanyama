@@ -1,0 +1,404 @@
+[
+  {
+    "id": 1,
+    "title": "Greetings",
+    "description": "Learn basic greetings in Oshikwanyama",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'Hello' in Oshikwanyama?",
+        "options": ["Wa uhala po", "Ongipi", "Meme", "Tate"],
+        "correct": "Wa uhala po",
+        "explanation": "'Wa uhala po' is a common greeting in Oshikwanyama, similar to saying 'Hello' or 'How are you'"
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "What does 'Onawa' mean?",
+        "options": ["Goodbye", "Fine/Good", "Thank you", "Yes"],
+        "correct": "Fine/Good",
+        "explanation": "'Onawa' is used to respond when someone asks how you are, meaning 'I am fine' or 'I am good'"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match the Oshikwanyama greeting with its meaning",
+        "pairs": [
+          { "word": "Wa uhala po", "meaning": "Hello/How are you" },
+          { "word": "Ongipi", "meaning": "What is your name" },
+          { "word": "Tangi", "meaning": "Thank you" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Family",
+    "description": "Learn family terms in Oshikwanyama",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'Meme' in Oshikwanyama?",
+        "options": ["Father", "Mother", "Brother", "Sister"],
+        "correct": "Mother",
+        "explanation": "'Meme' is the Oshikwanyama word for 'mother'"
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'Father' in Oshikwanyama?",
+        "options": ["Meme", "Tate", "Omumwameme", "Omukulukadi"],
+        "correct": "Tate",
+        "explanation": "'Tate' is the Oshikwanyama word for 'father'"
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "My brother is called Petrus: __________ wange oitwa Petrus",
+        "answer": "Omumwameme",
+        "hint": "Brother = Omumwameme"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Numbers",
+    "description": "Learn to count in Oshikwanyama",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'imwe' in Oshikwanyama?",
+        "options": ["One", "Two", "Three", "Four"],
+        "correct": "One",
+        "explanation": "'imwe' is the Oshikwanyama word for the number 'one'"
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'Five' in Oshikwanyama?",
+        "options": ["mbali", "nhatu", "ne", "nhano"],
+        "correct": "nhano",
+        "explanation": "'nhano' is the Oshikwanyama word for the number 'five'"
+      },
+      {
+        "type": "ordering",
+        "prompt": "Put these Oshikwanyama numbers in order from 1-5",
+        "items": ["imwe", "mbali", "nhatu", "ne", "nhano"]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Food & Drinks",
+    "description": "Learn vocabulary for foods and drinks",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'oshingali' in Oshikwanyama?",
+        "options": ["Water", "Bread", "Meat", "Fruit"],
+        "correct": "Bread",
+        "explanation": "'oshingali' is the Oshikwanyama word for 'bread'"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these Oshikwanyama food words with their meanings",
+        "pairs": [
+          { "word": "onyama", "meaning": "meat" },
+          { "word": "omeva", "meaning": "water" },
+          { "word": "oiimati", "meaning": "fruits" }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'I am hungry' in Oshikwanyama?",
+        "options": ["Onda fya", "Onda kola", "Onda nyika", "Onda hala"],
+        "correct": "Onda fya",
+        "explanation": "'Onda fya' means 'I am hungry' in Oshikwanyama"
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "I want to drink water: Onda hala oku __________ omeva",
+        "answer": "nwa",
+        "hint": "to drink = nwa"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Common Phrases",
+    "description": "Essential everyday expressions",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What does 'eewa' mean?",
+        "options": ["No", "Yes", "Maybe", "Hello"],
+        "correct": "Yes",
+        "explanation": "'eewa' is how you say 'yes' in Oshikwanyama"
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'No' in Oshikwanyama?",
+        "options": ["Eewa", "Ahawe", "Tangi", "Onawa"],
+        "correct": "Ahawe",
+        "explanation": "'Ahawe' is how you say 'no' in Oshikwanyama"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these common phrases with their meanings",
+        "pairs": [
+          { "word": "Tangi unene", "meaning": "Thank you very much" },
+          { "word": "Onde ku hole", "meaning": "I love you" },
+          { "word": "Oshike?", "meaning": "What?" }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "__________ ove? (How are you?)",
+        "answer": "Ou li nawa",
+        "hint": "This is how you ask someone how they are doing"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Days & Time",
+    "description": "Learn days of the week and time expressions",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'Osoondaxa' in English?",
+        "options": ["Monday", "Wednesday", "Friday", "Sunday"],
+        "correct": "Sunday",
+        "explanation": "'Osoondaxa' is the Oshikwanyama word for 'Sunday'"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match the Oshikwanyama days with their English equivalents",
+        "pairs": [
+          { "word": "Etitano", "meaning": "Friday" },
+          { "word": "Etine", "meaning": "Thursday" },
+          { "word": "Etivali", "meaning": "Tuesday" }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'month' in Oshikwanyama?",
+        "options": ["efiku", "etango", "omwedi", "odula"],
+        "correct": "omwedi",
+        "explanation": "'omwedi' means 'month' in Oshikwanyama"
+      },
+      {
+        "type": "ordering",
+        "prompt": "Put these time-related words in order from shortest to longest",
+        "items": [
+          "efiku (day)",
+          "otundi (hour)",
+          "omwedi (month)",
+          "odula (year)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Weather",
+    "description": "Learn words for weather and seasons",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'odula' in Oshikwanyama?",
+        "options": ["Sun", "Wind", "Rain", "Snow"],
+        "correct": "Rain",
+        "explanation": "'odula' means 'rain' in Oshikwanyama. It can also mean 'year' depending on context."
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'It is hot' in Oshikwanyama?",
+        "options": ["Okwa talala", "Okwa pupyala", "Okwa kola", "Okwa yeleka"],
+        "correct": "Okwa pupyala",
+        "explanation": "'Okwa pupyala' means 'It is hot' in Oshikwanyama"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these weather terms with their meanings",
+        "pairs": [
+          { "word": "etango", "meaning": "sun" },
+          { "word": "omhepo", "meaning": "wind" },
+          { "word": "odivo", "meaning": "cold" }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "It is raining: Okwa __________ odula",
+        "answer": "loka",
+        "hint": "The verb for when rain is falling"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Colors",
+    "description": "Learn basic colors in Oshikwanyama",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'oshilunga' in English?",
+        "options": ["Blue", "Red", "Black", "Green"],
+        "correct": "Black",
+        "explanation": "'oshilunga' is the Oshikwanyama word for 'black'"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these colors with their Oshikwanyama names",
+        "pairs": [
+          { "word": "oshitilyana", "meaning": "red" },
+          { "word": "oshishunga", "meaning": "green" },
+          { "word": "oshimbulau", "meaning": "blue" }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'white' in Oshikwanyama?",
+        "options": ["oshitokele", "oshishunga", "oshimbulau", "oshilunga"],
+        "correct": "oshitokele",
+        "explanation": "'oshitokele' means 'white' in Oshikwanyama"
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "The sky is blue: Ombaka oya __________ (oshimbulau)",
+        "answer": "mbulau",
+        "hint": "Use the adjective form of 'blue'"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Animals",
+    "description": "Learn animal names in Oshikwanyama",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What is 'ongobe' in English?",
+        "options": ["Goat", "Sheep", "Cow", "Chicken"],
+        "correct": "Cow",
+        "explanation": "'ongobe' is the Oshikwanyama word for 'cow' or 'cattle'"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these animals with their Oshikwanyama names",
+        "pairs": [
+          { "word": "ombwa", "meaning": "dog" },
+          { "word": "ongulu", "meaning": "pig" },
+          { "word": "oshikombo", "meaning": "goat" }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "How do you say 'lion' in Oshikwanyama?",
+        "options": ["onghoshi", "ombwa", "ongwe", "ongobe"],
+        "correct": "onghoshi",
+        "explanation": "'onghoshi' means 'lion' in Oshikwanyama"
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "I saw an elephant: Onda mona __________ ",
+        "answer": "onjaba",
+        "hint": "Elephant = onjaba"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Simple Conversation",
+    "description": "Practice putting it all together",
+    "questions": [
+      {
+        "type": "ordering",
+        "prompt": "Arrange this greeting conversation in the correct order",
+        "items": [
+          "Wa uhala po (Hello)",
+          "Eeno, ondi li nawa. Ove ou li nawa? (Yes, I'm fine. Are you well?)",
+          "Onawa, tangi. (Fine, thank you.)",
+          "Ongipi? (What is your name?)"
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Which phrase would you use to ask where someone is going?",
+        "options": [
+          "Ou li peni?",
+          "Oto i peni?",
+          "Owa dja peni?",
+          "Ou hole shike?"
+        ],
+        "correct": "Oto i peni?",
+        "explanation": "'Oto i peni?' means 'Where are you going?' in Oshikwanyama"
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these question phrases with their meanings",
+        "pairs": [
+          { "word": "Owa dja peni?", "meaning": "Where are you from?" },
+          { "word": "Ou na eedula ngapi?", "meaning": "How old are you?" },
+          { "word": "Ou hole shike?", "meaning": "What do you like?" }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "I am going to school: Onda __________ kosikola",
+        "answer": "inda",
+        "hint": "The verb 'to go'"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Proverbs from 'Omishe Di Dole Eyovi'",
+    "description": "Learn traditional Oshikwanyama proverbs and wisdom",
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "What does the proverb 'Omunwe umwe ihau tondoka outa' mean?",
+        "options": [
+          "A single arrow cannot hit all targets",
+          "One finger cannot press a bow",
+          "The smallest finger is often the strongest",
+          "A bow without an arrow is useless"
+        ],
+        "correct": "One finger cannot press a bow",
+        "explanation": "This proverb emphasizes the importance of cooperation. Just as you need multiple fingers to use a bow properly, many tasks require collaborative effort."
+      },
+      {
+        "type": "matching",
+        "prompt": "Match these proverbs with their meanings",
+        "pairs": [
+          {
+            "word": "Oshimbodi o hashi li ondjupa",
+            "meaning": "A mamba eats a python (even the mighty can fall)"
+          },
+          {
+            "word": "Olupale ihalu ningwa olumwe",
+            "meaning": "A village is not built in a day (patience is needed)"
+          },
+          {
+            "word": "Omunhu oshihupelo",
+            "meaning": "A person is a river ford (humans should help each other)"
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "The proverb 'Omishe di dole eyovi' teaches us to:",
+        "options": [
+          "Give up when things get difficult",
+          "Believe that all things are possible",
+          "Trust only in visible things",
+          "Avoid challenging tasks"
+        ],
+        "correct": "Believe that all things are possible",
+        "explanation": "This proverb encourages perseverance and optimism. It suggests that with effort and determination, one can achieve what might seem impossible."
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Complete this proverb: 'Oludi oludi itali ningine __________'",
+        "answer": "ombabi",
+        "hint": "The proverb is about how a species cannot turn into another species"
+      }
+    ]
+  }
+]

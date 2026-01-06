@@ -1,0 +1,40 @@
+@import "../../variables";
+
+.lesson {
+  &-page {
+  }
+
+  &__vocab {
+    &-table {
+      margin: 10px auto;
+      border-collapse: collapse;
+      border: 1px solid black;
+      padding: 0;
+    }
+
+    &--english,
+    &--kwanyama {
+      padding: 5px 10px;
+      border: 1px solid black;
+    }
+  }
+
+  &__examples {
+    margin: 10px auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  &__example {
+    &-title {
+      margin-top: 20px;
+    }
+  }
+
+  &__navigation-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+  }
+}

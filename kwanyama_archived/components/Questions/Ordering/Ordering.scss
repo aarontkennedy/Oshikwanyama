@@ -1,0 +1,41 @@
+@import "../../../variables";
+
+.ordering {
+  &__container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &__items-container {
+    margin-bottom: 24px;
+  }
+
+  &__item-number {
+    color: #888;
+    font-size: 14px;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+  }
+
+  &__check-button {
+    padding: 8px 16px;
+    background-color: $blueTertiary;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $blueSecondary;
+    }
+  }
+}

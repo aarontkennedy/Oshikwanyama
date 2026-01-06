@@ -1,0 +1,25 @@
+@import "../../variables";
+
+.home {
+  &__contents {
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__cta-wrapper {
+    margin-top: 10px;
+  }
+  &__cta-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  &__cta-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px auto;
+  }
+}
