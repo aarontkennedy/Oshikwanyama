@@ -1,7 +1,7 @@
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import lessons from "@/data/oshikwanyama/lessons.json";
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { FlatList, StyleSheet } from "react-native";
 
 export default function LessonDetail() {
@@ -33,6 +33,12 @@ export default function LessonDetail() {
           </ThemedView>
         )}
       />
+
+      <Link href={`/oshikwanyama/quiz/${lesson.id}`}>
+        <Link.Trigger>
+          <ThemedText type="subtitle">Start Quiz</ThemedText>
+        </Link.Trigger>
+      </Link>
     </ThemedView>
   );
 }

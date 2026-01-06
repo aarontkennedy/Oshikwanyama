@@ -1,7 +1,8 @@
 import { Vocab } from "@/types/oshikwanyama";
+import React from "react";
 import "./VocabTable.scss";
 
-const VocabTable = ({ vocab }: { vocab: Vocab[] }): JSX.Element | null => {
+const VocabTable = ({ vocab }: { vocab: Vocab[] }): React.ReactNode | null => {
   return (
     <table className="vocab-table">
       <tbody>

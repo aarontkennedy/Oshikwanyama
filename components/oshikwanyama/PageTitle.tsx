@@ -1,10 +1,12 @@
+import React from "react";
+
 const PageTitle = ({
   title,
   translation,
 }: {
   title: string;
   translation: string;
-}): JSX.Element => (
+}): React.ReactNode => (
   <div className="page__header">
     <div className="page__header-title-container">
       <div className="page__header-title">{title}</div>
