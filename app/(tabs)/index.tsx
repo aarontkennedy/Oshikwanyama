@@ -1,5 +1,5 @@
 import { Image } from "expo-image";
-import { StyleSheet } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
@@ -39,6 +39,20 @@ export default function HomeScreen() {
               <ThemedText type="subtitle">Proverbs</ThemedText>
             </Link.Trigger>
           </Link>
+
+          <FlatList
+            data={lessons}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={({ item }) => (
+              <Link href={`/oshikwanyama/lessons/${item.id}`}>
+                <Link.Trigger>
+                  <ThemedText type="subtitle">{item.title}</ThemedText>
+                  <ThemedText>{item.description}</ThemedText>
+                </Link.Trigger>
+              </Link>
+            )}
+            ItemSeparatorComponent={() => <ThemedText> </ThemedText>}
+          />
         </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
