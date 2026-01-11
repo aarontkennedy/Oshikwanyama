@@ -3,6 +3,13 @@ export interface Lesson {
   title: string;
   description: string;
   questions: Question[];
+  vocab: Vocab[];
+  dialogs: ExampleDialog[];
+}
+
+export interface Vocab {
+  English: string;
+  Oshikwanyama: string;
 }
 
 export interface Question {
@@ -41,11 +48,6 @@ export interface Proverb {
 }
 
 export type Section = "home" | "lessons" | "lesson" | "quiz" | "proverbs";
-
-export interface Vocab {
-  English: string;
-  Oshikwanyama: string;
-}
 
 export interface ExampleDialog {
   title: string;
