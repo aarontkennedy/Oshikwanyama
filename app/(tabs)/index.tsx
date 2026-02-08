@@ -1,5 +1,5 @@
 import { Image } from "expo-image";
-import { StyleSheet, FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
@@ -19,26 +19,13 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.stepContainer}>
-        {/* Oshikwanyama section (moved from /oshikwanyama/index) */}
         <ThemedView style={styles.oshikwanyamaContainer}>
           <ThemedText type="title">Tjika Oshikwanyama</ThemedText>
           <ThemedText style={styles.oshLead}>
             Learn Oshikwanyama — simple lessons, proverbs and quizzes.
           </ThemedText>
 
-          <Link href="/oshikwanyama/lessons">
-            <Link.Trigger>
-              <ThemedText type="subtitle">
-                Lessons ({lessons.length})
-              </ThemedText>
-            </Link.Trigger>
-          </Link>
-
-          <Link href="/oshikwanyama/proverbs">
-            <Link.Trigger>
-              <ThemedText type="subtitle">Proverbs</ThemedText>
-            </Link.Trigger>
-          </Link>
+          <ThemedText type="subtitle">Lessons</ThemedText>
 
           <FlatList
             data={lessons}
@@ -53,6 +40,12 @@ export default function HomeScreen() {
             )}
             ItemSeparatorComponent={() => <ThemedText> </ThemedText>}
           />
+
+          <Link href="/oshikwanyama/proverbs">
+            <Link.Trigger>
+              <ThemedText type="subtitle">Proverbs</ThemedText>
+            </Link.Trigger>
+          </Link>
         </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
