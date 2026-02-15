@@ -108,7 +108,7 @@ export default function QuizScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">{lesson.title} — Quiz</ThemedText>
+      <ThemedText type="title">{lesson.title.Oshikwanyama} — Quiz</ThemedText>
       <ThemedText>
         {index + 1}/{lesson.questions.length}
       </ThemedText>

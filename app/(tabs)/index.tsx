@@ -8,6 +8,11 @@ import lessons from "@/data/oshikwanyama/lessons.json";
 import { Link } from "expo-router";
 
 export default function HomeScreen() {
+  const lessonItems = lessons.map((item) => ({
+    ...item,
+    type: "lesson",
+  }));
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -18,36 +23,36 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.stepContainer}>
-        <ThemedView style={styles.oshikwanyamaContainer}>
-          <ThemedText type="title">Tjika Oshikwanyama</ThemedText>
-          <ThemedText style={styles.oshLead}>
-            Learn Oshikwanyama — simple lessons, proverbs and quizzes.
-          </ThemedText>
-
-          <ThemedText type="subtitle">Lessons</ThemedText>
-
-          <FlatList
-            data={lessons}
-            keyExtractor={(item) => String(item.id)}
-            renderItem={({ item }) => (
-              <Link href={`/oshikwanyama/lessons/${item.id}`}>
-                <Link.Trigger>
-                  <ThemedText type="subtitle">{item.title}</ThemedText>
-                  <ThemedText>{item.description}</ThemedText>
-                </Link.Trigger>
-              </Link>
-            )}
-            ItemSeparatorComponent={() => <ThemedText> </ThemedText>}
-          />
-
-          <Link href="/oshikwanyama/proverbs">
+      <FlatList
+        scrollEnabled={false}
+        data={lessonItems}
+        keyExtractor={(item) => String(item.id)}
+        ListHeaderComponent={
+          <ThemedView style={styles.oshikwanyamaContainer}>
+            <ThemedText type="title">Tjika Oshikwanyama</ThemedText>
+            <ThemedText style={styles.oshLead}>
+              Learn Oshikwanyama — simple lessons, proverbs and quizzes.
+            </ThemedText>
+            <ThemedText type="subtitle">Lessons</ThemedText>
+          </ThemedView>
+        }
+        renderItem={({ item }) => (
+          <Link href={`/oshikwanyama/lessons/${item.id}`}>
+            <Link.Trigger>
+              <ThemedText type="subtitle">{item.title.Oshikwanyama}</ThemedText>
+              <ThemedText>{item.description}</ThemedText>
+            </Link.Trigger>
+          </Link>
+        )}
+        ItemSeparatorComponent={() => <ThemedText> </ThemedText>}
+        ListFooterComponent={
+          <Link href="/oshikwanyama/proverbs" style={styles.proverbsLink}>
             <Link.Trigger>
               <ThemedText type="subtitle">Proverbs</ThemedText>
             </Link.Trigger>
           </Link>
-        </ThemedView>
-      </ThemedView>
+        }
+      />
     </ParallaxScrollView>
   );
 }
@@ -58,16 +63,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
   oshikwanyamaContainer: {
     gap: 8,
-    padding: 12,
+    paddingHorizontal: 12,
     marginBottom: 8,
   },
   oshLead: {
+    marginBottom: 8,
+  },
+  proverbsLink: {
+    marginTop: 8,
     marginBottom: 8,
   },
   reactLogo: {

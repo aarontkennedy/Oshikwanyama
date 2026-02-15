@@ -1,8 +1,26 @@
 [
   {
     "id": 1,
-    "title": "Greetings",
+    "title": {
+      "Oshikwanyama": "Wa lele po?",
+      "English": "Greetings"
+    },
     "description": "Learn basic greetings in Oshikwanyama",
+    "dialogues": [
+      {
+        "title": "Greeting",
+        "dialogue": [
+          { "speaker": "Person A", "Oshikwanyama": "Wa uhala po?" },
+          { "speaker": "Person B", "Oshikwanyama": "Onawa" }
+        ]
+      }
+    ],
+    "vocabulary": [
+      { "Oshikwanyama": "Wa uhala po", "English": "Hello/How are you" },
+      { "Oshikwanyama": "Ongipi", "English": "What is your name" },
+      { "Oshikwanyama": "Onawa", "English": "Fine/Good" },
+      { "Oshikwanyama": "Tangi", "English": "Thank you" }
+    ],
     "questions": [
       {
         "type": "multiple-choice",

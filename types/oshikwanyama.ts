@@ -1,15 +1,25 @@
+export interface Vocab {
+  English: string;
+  Oshikwanyama: string;
+}
+
+export interface Dialog {
+  speaker: string;
+  text: string;
+}
+
+export interface ExampleDialog {
+  title: string;
+  conversation: Dialog[];
+}
+
 export interface Lesson {
   id: number;
-  title: string;
+  title: Vocab;
   description: string;
   questions: Question[];
   vocab: Vocab[];
   dialogs: ExampleDialog[];
-}
-
-export interface Vocab {
-  English: string;
-  Oshikwanyama: string;
 }
 
 export interface Question {
@@ -23,13 +33,8 @@ export interface MultipleChoiceQuestion extends Question {
   explanation: string;
 }
 
-export interface MatchingPair {
-  word: string;
-  meaning: string;
-}
-
 export interface MatchingQuestion extends Question {
-  pairs: MatchingPair[];
+  pairs: Vocab[];
 }
 
 export interface FillInTheBlankQuestion extends Question {
@@ -41,15 +46,6 @@ export interface OrderingQuestion extends Question {
   items: string[];
 }
 
-export interface Proverb {
-  original: string;
-  translation: string;
+export interface Proverb extends Vocab {
   explanation: string;
-}
-
-export type Section = "home" | "lessons" | "lesson" | "quiz" | "proverbs";
-
-export interface ExampleDialog {
-  title: string;
-  conversation: string[];
 }
