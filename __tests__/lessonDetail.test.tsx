@@ -12,13 +12,21 @@ jest.mock("expo-router", () => {
   };
 });
 
+jest.mock("@react-navigation/native", () => ({
+  useNavigation: jest.fn(() => ({
+    setOptions: jest.fn(),
+  })),
+}));
+
 jest.mock(
   "@/data/oshikwanyama/lessons.json",
   () => [
     {
       id: 1,
-      title: "Test Lesson",
+      title: { Oshikwanyama: "Test Lesson" },
       description: "A test lesson",
+      vocabulary: [],
+      dialogues: [],
       questions: [
         {
           type: "multiple-choice",
@@ -31,7 +39,7 @@ jest.mock(
       ],
     },
   ],
-  { virtual: true }
+  { virtual: true },
 );
 
 import LessonDetail from "@/app/oshikwanyama/lessons/[id]";

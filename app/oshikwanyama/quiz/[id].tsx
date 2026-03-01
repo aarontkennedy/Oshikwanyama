@@ -1,10 +1,24 @@
+import { FillBlankQuestion } from "@/components/FillBlankQuestion";
+import { MatchingQuestion } from "@/components/MatchingQuestion";
+import { MultipleChoiceOptions } from "@/components/MultipleChoiceOptions";
+import { OrderingQuestion } from "@/components/OrderingQuestion";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import lessons from "@/data/oshikwanyama/lessons.json";
 import { GameContext } from "@/GameContext";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useContext, useState } from "react";
-import { Pressable, StyleSheet, TextInput } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
+
+// simple Fisher–Yates shuffle for arrays
+export function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export default function QuizScreen() {
   const params = useLocalSearchParams<{ id: string }>();
@@ -18,8 +32,12 @@ export default function QuizScreen() {
   const [localScore, setLocalScore] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [input, setInput] = useState("");
-  const [matchingAnswers, setMatchingAnswers] = useState<string[]>([]);
-  const [orderingInput, setOrderingInput] = useState("");
+  const [matchingAnswers, setMatchingAnswers] = useState<
+    { wordIdx: number; meaningIdx: number }[]
+  >([]);
+  const [orderedItems, setOrderedItems] = useState<
+    { id: string; text: string }[]
+  >([]);
   const [submitted, setSubmitted] = useState(false);
   const [lastCorrect, setLastCorrect] = useState<boolean | null>(null);
   const [finished, setFinished] = useState(false);
@@ -32,16 +50,20 @@ export default function QuizScreen() {
     );
   }
 
-  const question = lesson.questions[index];
+  // create a shuffled copy of the questions so order is unpredictable
+  const [questions] = useState(() => shuffleArray(lesson.questions));
+  const question = questions[index];
 
-  // Ensure matchingAnswers is sized for matching questions
+  // Initialize orderedItems for ordering questions
   React.useEffect(() => {
-    if (question?.type === "matching") {
-      const pairs = (question as any).pairs || [];
-      setMatchingAnswers((prev) => {
-        if (prev.length === pairs.length) return prev;
-        return Array(pairs.length).fill("");
-      });
+    if (question?.type === "ordering") {
+      const items: string[] = (question as any).items || [];
+      setOrderedItems(
+        items.map((text, i) => ({
+          id: String(i),
+          text,
+        })),
+      );
     }
   }, [index, question]);
 
@@ -58,20 +80,18 @@ export default function QuizScreen() {
         (question as any).answer.trim().toLowerCase();
     } else if (question.type === "matching") {
       const pairs = (question as any).pairs || [];
-      const allMatch = pairs.every((p: any, i: number) => {
-        const given = (matchingAnswers[i] || "").trim().toLowerCase();
-        const expected = (p.meaning || "").trim().toLowerCase();
-        return given === expected;
-      });
-      correct = allMatch;
+      // Check if all words are matched and each match is correct
+      const allMatched =
+        matchingAnswers.length === pairs.length &&
+        matchingAnswers.every((match) => match.meaningIdx === match.wordIdx);
+      correct = allMatched;
     } else if (question.type === "ordering") {
       const items: string[] = (question as any).items || [];
       const normalizedExpected = items
         .map((s) => s.trim().toLowerCase())
         .join(",");
-      const normalizedGiven = orderingInput
-        .split(",")
-        .map((s) => s.trim().toLowerCase())
+      const normalizedGiven = orderedItems
+        .map((item) => item.text.trim().toLowerCase())
         .join(",");
       correct = normalizedExpected === normalizedGiven;
     } else {
@@ -90,10 +110,10 @@ export default function QuizScreen() {
     setSelected(null);
     setInput("");
     setMatchingAnswers([]);
-    setOrderingInput("");
+    setOrderedItems([]);
     setLastCorrect(null);
 
-    if (next >= lesson.questions.length) {
+    if (next >= questions.length) {
       // finished
       setFinished(true);
       setScore((s) => s + localScore);
@@ -110,7 +130,7 @@ export default function QuizScreen() {
     <ThemedView style={styles.container}>
       <ThemedText type="title">{lesson.title.Oshikwanyama} — Quiz</ThemedText>
       <ThemedText>
-        {index + 1}/{lesson.questions.length}
+        {index + 1}/{questions.length}
       </ThemedText>
 
       {!finished ? (
@@ -118,58 +138,30 @@ export default function QuizScreen() {
           <ThemedText type="subtitle">{question.prompt}</ThemedText>
 
           {question.type === "multiple-choice" && (
-            <ThemedView style={styles.options}>
-              {(question as any).options.map((opt: string) => (
-                <Pressable
-                  key={opt}
-                  onPress={() => setSelected(opt)}
-                  style={({ pressed }) => [
-                    styles.option,
-                    selected === opt && styles.optionSelected,
-                    pressed && { opacity: 0.6 },
-                  ]}
-                >
-                  <ThemedText>{opt}</ThemedText>
-                </Pressable>
-              ))}
-            </ThemedView>
-          )}
-
-          {question.type === "fill-blank" && (
-            <TextInput
-              style={styles.input}
-              value={input}
-              placeholder="Type your answer"
-              onChangeText={setInput}
+            <MultipleChoiceOptions
+              options={(question as any).options}
+              selected={selected}
+              onSelect={setSelected}
             />
           )}
 
+          {question.type === "fill-blank" && (
+            <FillBlankQuestion value={input} onChangeText={setInput} />
+          )}
+
           {question.type === "matching" && (
-            <ThemedView>
-              {((question as any).pairs || []).map((p: any, i: number) => (
-                <TextInput
-                  key={p.word + i}
-                  style={styles.input}
-                  placeholder={`Match meaning for ${p.word}`}
-                  value={matchingAnswers[i] || ""}
-                  onChangeText={(text) =>
-                    setMatchingAnswers((prev) => {
-                      const copy = [...prev];
-                      copy[i] = text;
-                      return copy;
-                    })
-                  }
-                />
-              ))}
-            </ThemedView>
+            <MatchingQuestion
+              pairs={(question as any).pairs || []}
+              answers={matchingAnswers}
+              onAnswerChange={setMatchingAnswers}
+            />
           )}
 
           {question.type === "ordering" && (
-            <TextInput
-              style={styles.input}
-              value={orderingInput}
-              placeholder="Enter ordered items, comma separated"
-              onChangeText={setOrderingInput}
+            <OrderingQuestion
+              items={(question as any).items || []}
+              orderedItems={orderedItems}
+              onReorder={setOrderedItems}
             />
           )}
 
@@ -184,12 +176,12 @@ export default function QuizScreen() {
                   {lastCorrect === true
                     ? "Correct!"
                     : lastCorrect === false
-                    ? question.type === "multiple-choice"
-                      ? `Incorrect — answer: ${(question as any).correct}`
-                      : question.type === "fill-blank"
-                      ? `Incorrect — answer: ${(question as any).answer}`
-                      : "Incorrect"
-                    : "Answered"}
+                      ? question.type === "multiple-choice"
+                        ? `Incorrect — answer: ${(question as any).correct}`
+                        : question.type === "fill-blank"
+                          ? `Incorrect — answer: ${(question as any).answer}`
+                          : "Incorrect"
+                      : "Answered"}
                 </ThemedText>
                 <Pressable onPress={handleNext} style={styles.button}>
                   <ThemedText>Next</ThemedText>
@@ -203,7 +195,7 @@ export default function QuizScreen() {
           <ThemedText type="title">Quiz Finished</ThemedText>
           <ThemedText>You scored {localScore} points in this quiz.</ThemedText>
           <Pressable
-            onPress={() => router.push("/oshikwanyama/lessons")}
+            onPress={() => router.push("/(tabs)/index")}
             style={styles.button}
           >
             <ThemedText>Back to lessons</ThemedText>
@@ -217,9 +209,6 @@ export default function QuizScreen() {
 const styles = StyleSheet.create({
   container: { gap: 12, padding: 16 },
   questionContainer: { gap: 12 },
-  options: { gap: 8 },
-  option: { padding: 10, borderWidth: 1, borderColor: "#ccc", borderRadius: 6 },
-  optionSelected: { backgroundColor: "#e6f4f9" },
   input: { padding: 8, borderWidth: 1, borderColor: "#ccc", borderRadius: 6 },
   controls: { gap: 8, marginTop: 8 },
   button: {

@@ -34,7 +34,7 @@ jest.mock(
       ],
     },
   ],
-  { virtual: true }
+  { virtual: true },
 );
 
 describe("Quiz (matching & ordering)", () => {
@@ -42,39 +42,54 @@ describe("Quiz (matching & ordering)", () => {
     const setScore = jest.fn();
     const setCompletedLessons = jest.fn();
 
-    const { getByPlaceholderText, getByText } = render(
-      <GameContext.Provider
-        value={{
-          score: 0,
-          setScore,
-          streak: 0,
-          setStreak: () => {},
-          completedLessons: [],
-          setCompletedLessons,
-        }}
-      >
-        <QuizScreen />
-      </GameContext.Provider>
-    );
+    const { getByPlaceholderText, getByText, getByTestId, queryByTestId } =
+      render(
+        <GameContext.Provider
+          value={{
+            score: 0,
+            setScore,
+            streak: 0,
+            setStreak: () => {},
+            completedLessons: [],
+            setCompletedLessons,
+          }}
+        >
+          <QuizScreen />
+        </GameContext.Provider>,
+      );
 
-    // Matching question
-    const m1 = getByPlaceholderText("Match meaning for one");
-    const m2 = getByPlaceholderText("Match meaning for two");
-    fireEvent.changeText(m1, "uno");
-    fireEvent.changeText(m2, "dos");
+    // Depending on shuffle, either matching or ordering may appear first
+    if (queryByTestId("matching-word-0")) {
+      // matching first
+      fireEvent.press(getByTestId("matching-word-0")); // Select "one"
+      fireEvent.press(getByTestId("matching-meaning-0")); // Match to "uno"
+      fireEvent.press(getByTestId("matching-word-1")); // Select "two"
+      fireEvent.press(getByTestId("matching-meaning-1")); // Match to "dos"
 
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-    fireEvent.press(getByText("Next"));
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
 
-    // Ordering question
-    const orderInput = getByPlaceholderText(
-      "Enter ordered items, comma separated"
-    );
-    fireEvent.changeText(orderInput, "a,b,c");
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-    fireEvent.press(getByText("Next"));
+      // now ordering
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    } else {
+      // ordering first
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+
+      // then matching
+      fireEvent.press(getByTestId("matching-word-0"));
+      fireEvent.press(getByTestId("matching-meaning-0"));
+      fireEvent.press(getByTestId("matching-word-1"));
+      fireEvent.press(getByTestId("matching-meaning-1"));
+
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    }
 
     await waitFor(() => expect(getByText("Quiz Finished")).toBeTruthy());
 

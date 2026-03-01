@@ -44,6 +44,17 @@
           { "word": "Ongipi", "meaning": "What is your name" },
           { "word": "Tangi", "meaning": "Thank you" }
         ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Complete the greeting: Wa uhala ___?",
+        "answer": "po",
+        "hint": "The greeting ends with this word"
+      },
+      {
+        "type": "ordering",
+        "prompt": "Order the words to form the greeting 'How are you?'",
+        "items": ["Wa", "uhala", "po"]
       }
     ]
   }

@@ -36,7 +36,7 @@ jest.mock(
       ],
     },
   ],
-  { virtual: true }
+  { virtual: true },
 );
 
 describe("QuizScreen", () => {
@@ -56,39 +56,48 @@ describe("QuizScreen", () => {
         }}
       >
         <QuizScreen />
-      </GameContext.Provider>
+      </GameContext.Provider>,
     );
 
-    // should show first question and options
-    expect(getByText("How do you say 'Hello' in Oshikwanyama?")).toBeTruthy();
-    const option = getByText("Wa uhala po");
-    fireEvent.press(option);
+    // order may be randomized – check which question appears first
+    if (queryByText("Wa uhala po")) {
+      // multiple-choice is first
+      expect(getByText("How do you say 'Hello' in Oshikwanyama?")).toBeTruthy();
+      fireEvent.press(getByText("Wa uhala po"));
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
 
-    const submit = getByText("Submit");
-    fireEvent.press(submit);
+      // now should be fill-blank
+      expect(getByText(/My brother is called Petrus/)).toBeTruthy();
+      const answerInput = getByPlaceholderText("Type your answer");
+      fireEvent.changeText(answerInput, "Omumwameme");
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    } else {
+      // fill-blank appears first
+      expect(getByText(/My brother is called Petrus/)).toBeTruthy();
+      const answerInput = getByPlaceholderText("Type your answer");
+      fireEvent.changeText(answerInput, "Omumwameme");
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
 
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-
-    const next = getByText("Next");
-    fireEvent.press(next);
-
-    // Now fill-blank question should appear
-    expect(getByText(/My brother is called Petrus/)).toBeTruthy();
-
-    const answerInput = getByPlaceholderText("Type your answer");
-    fireEvent.changeText(answerInput, "Omumwameme");
-    fireEvent.press(getByText("Submit"));
-
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-
-    fireEvent.press(getByText("Next"));
+      // then multiple-choice
+      expect(getByText("How do you say 'Hello' in Oshikwanyama?")).toBeTruthy();
+      fireEvent.press(getByText("Wa uhala po"));
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    }
   });
 
   it("handles finish and calls context setters", async () => {
     const setScore = jest.fn();
     const setCompletedLessons = jest.fn();
 
-    const { getByText, getByPlaceholderText } = render(
+    const { getByText, queryByText, getByPlaceholderText } = render(
       <GameContext.Provider
         value={{
           score: 0,
@@ -100,34 +109,34 @@ describe("QuizScreen", () => {
         }}
       >
         <QuizScreen />
-      </GameContext.Provider>
+      </GameContext.Provider>,
     );
 
-    // Answer first question correctly
-    fireEvent.press(getByText("Wa uhala po"));
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-    fireEvent.press(getByText("Next"));
-
-    // Fill blank (answer correctly)
-    const input = getByPlaceholderText("Type your answer");
-    fireEvent.changeText(input, "Omumwameme");
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-
-    fireEvent.press(getByText("Next"));
+    // answer both questions correctly regardless of order
+    for (let i = 0; i < 2; i++) {
+      if (queryByText("Wa uhala po")) {
+        fireEvent.press(getByText("Wa uhala po"));
+      } else {
+        fireEvent.changeText(
+          getByPlaceholderText("Type your answer"),
+          "Omumwameme",
+        );
+      }
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    }
 
     await waitFor(() => expect(getByText("Quiz Finished")).toBeTruthy());
 
-    // context updates should have been called
     expect(setScore).toHaveBeenCalled();
     expect(setCompletedLessons).toHaveBeenCalled();
   });
-  it("handles finish and calls context setters", async () => {
+  it("handles finish with mixed correct/incorrect answers regardless of order", async () => {
     const setScore = jest.fn();
     const setCompletedLessons = jest.fn();
 
-    const { getByText } = render(
+    const { getByText, queryByText, getByPlaceholderText } = render(
       <GameContext.Provider
         value={{
           score: 0,
@@ -139,27 +148,35 @@ describe("QuizScreen", () => {
         }}
       >
         <QuizScreen />
-      </GameContext.Provider>
+      </GameContext.Provider>,
     );
 
-    // Answer first question correctly
-    fireEvent.press(getByText("Wa uhala po"));
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
-    fireEvent.press(getByText("Next"));
+    // perform flow: first seen question correct/simple, second seen incorrect
+    if (queryByText("Wa uhala po")) {
+      // multiple-choice shown first → answer it correctly
+      fireEvent.press(getByText("Wa uhala po"));
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
 
-    // Fill blank
-    const textInput = getByText("Submit");
-    // We can't access TextInput easily without testID; rely on flow: submitting without input is incorrect
-    fireEvent.press(getByText("Submit"));
-    await waitFor(() => expect(getByText(/Incorrect/)).toBeTruthy());
+      // then fill-blank incorrectly
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText(/Incorrect/)).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    } else {
+      // fill-blank shown first → answer incorrectly
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText(/Incorrect/)).toBeTruthy());
+      fireEvent.press(getByText("Next"));
 
-    // Now finish by pressing Next (should finish)
-    fireEvent.press(getByText("Next"));
+      // then multiple-choice correctly
+      fireEvent.press(getByText("Wa uhala po"));
+      fireEvent.press(getByText("Submit"));
+      await waitFor(() => expect(getByText("Correct!")).toBeTruthy());
+      fireEvent.press(getByText("Next"));
+    }
 
     await waitFor(() => expect(getByText("Quiz Finished")).toBeTruthy());
-
-    // context updates should have been called
     expect(setScore).toHaveBeenCalled();
     expect(setCompletedLessons).toHaveBeenCalled();
   });
