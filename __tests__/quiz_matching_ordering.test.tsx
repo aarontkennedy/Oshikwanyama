@@ -7,6 +7,7 @@ import { GameContext } from "@/GameContext";
 jest.mock("expo-router", () => ({
   useLocalSearchParams: jest.fn(() => ({ id: "1" })),
   useRouter: jest.fn(() => ({ push: jest.fn() })),
+  useNavigation: jest.fn(() => ({ setOptions: jest.fn() })),
   Link: ({ children }: any) => children,
 }));
 

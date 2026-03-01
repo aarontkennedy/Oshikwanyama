@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   title: {
-    color: "white",
+    color: "#A1CEDC",
     fontSize: 16,
     fontWeight: "600",
     textAlign: "center",

@@ -8,6 +8,7 @@ import { GameContext } from "@/GameContext";
 jest.mock("expo-router", () => ({
   useLocalSearchParams: jest.fn(() => ({ id: "1" })),
   useRouter: jest.fn(() => ({ push: jest.fn() })),
+  useNavigation: jest.fn(() => ({ setOptions: jest.fn() })),
   Link: ({ children }: any) => children,
 }));
 
@@ -160,11 +161,15 @@ describe("QuizScreen", () => {
       fireEvent.press(getByText("Next"));
 
       // then fill-blank incorrectly
+      const wrongInput = getByPlaceholderText("Type your answer");
+      fireEvent.changeText(wrongInput, "wrong");
       fireEvent.press(getByText("Submit"));
       await waitFor(() => expect(getByText(/Incorrect/)).toBeTruthy());
       fireEvent.press(getByText("Next"));
     } else {
-      // fill-blank shown first → answer incorrectly
+      // fill-blank shown first → answer incorrectly (enter wrong text)
+      const wrongInput = getByPlaceholderText("Type your answer");
+      fireEvent.changeText(wrongInput, "wrong");
       fireEvent.press(getByText("Submit"));
       await waitFor(() => expect(getByText(/Incorrect/)).toBeTruthy());
       fireEvent.press(getByText("Next"));

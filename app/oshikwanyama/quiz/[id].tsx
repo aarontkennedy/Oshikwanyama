@@ -6,8 +6,8 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import lessons from "@/data/oshikwanyama/lessons.json";
 import { GameContext } from "@/GameContext";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import React, { useContext, useState } from "react";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 // simple Fisher–Yates shuffle for arrays
@@ -50,9 +50,26 @@ export default function QuizScreen() {
     );
   }
 
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: lesson.title.Oshikwanyama,
+    });
+  }, [lesson.title.Oshikwanyama, navigation]);
+
   // create a shuffled copy of the questions so order is unpredictable
   const [questions] = useState(() => shuffleArray(lesson.questions));
   const question = questions[index];
+
+  // Determine whether matching question is fully and correctly answered
+  const matchingPairs: { word: string; meaning: string }[] =
+    (question as any).pairs || [];
+  const allMatchingCorrect =
+    question.type === "matching"
+      ? matchingAnswers.length === matchingPairs.length &&
+        matchingAnswers.every((m) => m.meaningIdx === m.wordIdx)
+      : true;
 
   // Initialize orderedItems for ordering questions
   React.useEffect(() => {
@@ -128,7 +145,6 @@ export default function QuizScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title">{lesson.title.Oshikwanyama} — Quiz</ThemedText>
       <ThemedText>
         {index + 1}/{questions.length}
       </ThemedText>
@@ -167,7 +183,24 @@ export default function QuizScreen() {
 
           <ThemedView style={styles.controls}>
             {!submitted ? (
-              <Pressable onPress={handleSubmit} style={styles.button}>
+              // Disable submit for multiple-choice until an option is selected
+              <Pressable
+                onPress={handleSubmit}
+                style={({ pressed }) => [
+                  styles.button,
+                  (question.type === "multiple-choice" && !selected) ||
+                  (question.type === "matching" && !allMatchingCorrect) ||
+                  (question.type === "fill-blank" && input.trim() === "")
+                    ? styles.buttonDisabled
+                    : null,
+                  pressed && { opacity: 0.7 },
+                ]}
+                disabled={
+                  (question.type === "multiple-choice" && !selected) ||
+                  (question.type === "matching" && !allMatchingCorrect) ||
+                  (question.type === "fill-blank" && input.trim() === "")
+                }
+              >
                 <ThemedText>Submit</ThemedText>
               </Pressable>
             ) : (
@@ -194,10 +227,7 @@ export default function QuizScreen() {
         <ThemedView style={styles.finished}>
           <ThemedText type="title">Quiz Finished</ThemedText>
           <ThemedText>You scored {localScore} points in this quiz.</ThemedText>
-          <Pressable
-            onPress={() => router.push("/(tabs)/index")}
-            style={styles.button}
-          >
+          <Pressable onPress={() => router.push("/")} style={styles.button}>
             <ThemedText>Back to lessons</ThemedText>
           </Pressable>
         </ThemedView>
@@ -216,6 +246,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#A1CEDC",
     borderRadius: 6,
     alignItems: "center",
+  },
+  buttonDisabled: {
+    backgroundColor: "#cfdfe6",
+    opacity: 0.6,
   },
   finished: { gap: 12 },
 });
