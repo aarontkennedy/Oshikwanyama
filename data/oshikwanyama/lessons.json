@@ -6,16 +6,16 @@
       "English": "Greetings"
     },
     "description": "Learn basic greetings in Oshikwanyama",
-    "dialogues": [
+    "dialogs": [
       {
         "title": "Greeting",
-        "dialogue": [
-          { "speaker": "Person A", "Oshikwanyama": "Wa uhala po?" },
-          { "speaker": "Person B", "Oshikwanyama": "Onawa" }
+        "conversation": [
+          { "speaker": "Person A", "text": "Wa uhala po?" },
+          { "speaker": "Person B", "text": "Onawa" }
         ]
       }
     ],
-    "vocabulary": [
+    "vocab": [
       { "Oshikwanyama": "Wa uhala po", "English": "Hello/How are you" },
       { "Oshikwanyama": "Ongipi", "English": "What is your name" },
       { "Oshikwanyama": "Onawa", "English": "Fine/Good" },
@@ -40,9 +40,9 @@
         "type": "matching",
         "prompt": "Match the Oshikwanyama greeting with its meaning",
         "pairs": [
-          { "word": "Wa uhala po", "meaning": "Hello/How are you" },
-          { "word": "Ongipi", "meaning": "What is your name" },
-          { "word": "Tangi", "meaning": "Thank you" }
+          { "Oshikwanyama": "Wa uhala po", "English": "Hello/How are you" },
+          { "Oshikwanyama": "Ongipi", "English": "What is your name" },
+          { "Oshikwanyama": "Tangi", "English": "Thank you" }
         ]
       },
       {

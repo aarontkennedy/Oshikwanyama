@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oshikwanyama Lesson Editor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .section {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      .vocab-item,
+      .dialog-item,
+      .question-item,
+      .pair-item,
+      .option-item,
+      .item-item {
+        margin-bottom: 10px;
+      }
+      button {
+        margin: 5px;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Oshikwanyama Lesson Editor</h1>
+    <div class="section">
+      <h2>Lesson Details</h2>
+      <label>ID: <input type="number" id="lessonId" /></label><br />
+      <label>Title English: <input type="text" id="titleEnglish" /></label
+      ><br />
+      <label
+        >Title Oshikwanyama: <input type="text" id="titleOshikwanyama" /></label
+      ><br />
+      <label>Description: <textarea id="description"></textarea></label>
+    </div>
+
+    <div class="section">
+      <h2>Vocabulary</h2>
+      <div id="vocabList"></div>
+      <button onclick="addVocab()">Add Vocab</button>
+    </div>
+
+    <div class="section">
+      <h2>Dialogs</h2>
+      <div id="dialogList"></div>
+      <button onclick="addDialog()">Add Dialog</button>
+    </div>
+
+    <div class="section">
+      <h2>Questions</h2>
+      <div id="questionList"></div>
+      <button onclick="addQuestion()">Add Question</button>
+    </div>
+
+    <button onclick="generateJSON()">Generate JSON</button>
+    <textarea id="output" readonly></textarea>
+
+    <script>
+      let vocabCount = 0;
+      let dialogCount = 0;
+      let questionCount = 0;
+
+      function addVocab() {
+        vocabCount++;
+        const div = document.createElement("div");
+        div.className = "vocab-item";
+        div.innerHTML = `
+                <label>English: <input type="text" class="vocabEnglish"></label>
+                <label>Oshikwanyama: <input type="text" class="vocabOshikwanyama"></label>
+                <button onclick="removeItem(this)">Remove</button>
+            `;
+        document.getElementById("vocabList").appendChild(div);
+      }
+
+      function addDialog() {
+        dialogCount++;
+        const div = document.createElement("div");
+        div.className = "dialog-item";
+        div.innerHTML = `
+                <label>Title: <input type="text" class="dialogTitle"></label>
+                <div class="conversation"></div>
+                <button onclick="addConversation(this.previousElementSibling)">Add Conversation</button>
+                <button onclick="removeItem(this.parentElement)">Remove Dialog</button>
+            `;
+        document.getElementById("dialogList").appendChild(div);
+      }
+
+      function addConversation(container) {
+        const convDiv = document.createElement("div");
+        convDiv.innerHTML = `
+                <label>Speaker: <input type="text" class="speaker"></label>
+                <label>Text: <input type="text" class="text"></label>
+                <button onclick="removeItem(this.parentElement)">Remove</button>
+            `;
+        container.appendChild(convDiv);
+      }
+
+      function addQuestion() {
+        questionCount++;
+        const div = document.createElement("div");
+        div.className = "question-item";
+        div.innerHTML = `
+                <label>Type: <select class="questionType" onchange="changeQuestionType(this)">
+                    <option value="multiple-choice">Multiple Choice</option>
+                    <option value="matching">Matching</option>
+                    <option value="fill-blank">Fill Blank</option>
+                    <option value="ordering">Ordering</option>
+                </select></label>
+                <label>Prompt: <input type="text" class="prompt"></label>
+                <div class="questionDetails"></div>
+                <button onclick="removeItem(this.parentElement)">Remove Question</button>
+            `;
+        document.getElementById("questionList").appendChild(div);
+      }
+
+      function changeQuestionType(select) {
+        const details =
+          select.parentElement.nextElementSibling.nextElementSibling;
+        details.innerHTML = "";
+        const type = select.value;
+        if (type === "multiple-choice") {
+          details.innerHTML = `
+                    <div class="options"></div>
+                    <button onclick="addOption(this.previousElementSibling)">Add Option</button>
+                    <label>Correct: <input type="text" class="correct"></label>
+                    <label>Explanation: <textarea class="explanation"></textarea></label>
+                `;
+        } else if (type === "matching") {
+          details.innerHTML = `
+                    <div class="pairs"></div>
+                    <button onclick="addPair(this.previousElementSibling)">Add Pair</button>
+                `;
+        } else if (type === "fill-blank") {
+          details.innerHTML = `
+                    <label>Answer: <input type="text" class="answer"></label>
+                    <label>Hint: <input type="text" class="hint"></label>
+                `;
+        } else if (type === "ordering") {
+          details.innerHTML = `
+                    <div class="items"></div>
+                    <button onclick="addItem(this.previousElementSibling)">Add Item</button>
+                `;
+        }
+      }
+
+      function addOption(container) {
+        const optDiv = document.createElement("div");
+        optDiv.innerHTML = `<input type="text" class="option"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
+        container.appendChild(optDiv);
+      }
+
+      function addPair(container) {
+        const pairDiv = document.createElement("div");
+        pairDiv.innerHTML = `
+                <label>English: <input type="text" class="pairEnglish"></label>
+                <label>Oshikwanyama: <input type="text" class="pairOshikwanyama"></label>
+                <button onclick="removeItem(this.parentElement)">Remove</button>
+            `;
+        container.appendChild(pairDiv);
+      }
+
+      function addItem(container) {
+        const itemDiv = document.createElement("div");
+        itemDiv.innerHTML = `<input type="text" class="item"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
+        container.appendChild(itemDiv);
+      }
+
+      function removeItem(item) {
+        item.remove();
+      }
+
+      function generateJSON() {
+        const lesson = {
+          id: parseInt(document.getElementById("lessonId").value),
+          title: {
+            English: document.getElementById("titleEnglish").value,
+            Oshikwanyama: document.getElementById("titleOshikwanyama").value,
+          },
+          description: document.getElementById("description").value,
+          vocab: Array.from(document.querySelectorAll(".vocab-item")).map(
+            (item) => ({
+              English: item.querySelector(".vocabEnglish").value,
+              Oshikwanyama: item.querySelector(".vocabOshikwanyama").value,
+            }),
+          ),
+          dialogs: Array.from(document.querySelectorAll(".dialog-item")).map(
+            (item) => ({
+              title: item.querySelector(".dialogTitle").value,
+              conversation: Array.from(
+                item.querySelectorAll(".speaker, .text"),
+              ).reduce((acc, el, i) => {
+                if (i % 2 === 0) acc.push({ speaker: el.value });
+                else acc[acc.length - 1].text = el.value;
+                return acc;
+              }, []),
+            }),
+          ),
+          questions: Array.from(
+            document.querySelectorAll(".question-item"),
+          ).map((item) => {
+            const type = item.querySelector(".questionType").value;
+            const prompt = item.querySelector(".prompt").value;
+            const base = { type, prompt };
+            if (type === "multiple-choice") {
+              base.options = Array.from(item.querySelectorAll(".option")).map(
+                (opt) => opt.value,
+              );
+              base.correct = item.querySelector(".correct").value;
+              base.explanation = item.querySelector(".explanation").value;
+            } else if (type === "matching") {
+              base.pairs = Array.from(
+                item.querySelectorAll(".pairEnglish, .pairOshikwanyama"),
+              ).reduce((acc, el, i) => {
+                if (i % 2 === 0) acc.push({ English: el.value });
+                else acc[acc.length - 1].Oshikwanyama = el.value;
+                return acc;
+              }, []);
+            } else if (type === "fill-blank") {
+              base.answer = item.querySelector(".answer").value;
+              base.hint = item.querySelector(".hint").value;
+            } else if (type === "ordering") {
+              base.items = Array.from(item.querySelectorAll(".item")).map(
+                (it) => it.value,
+              );
+            }
+            return base;
+          }),
+        };
+        document.getElementById("output").value = JSON.stringify(
+          lesson,
+          null,
+          2,
+        );
+      }
+    </script>
+  </body>
+</html>

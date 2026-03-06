@@ -4,9 +4,9 @@ import React from "react";
 
 describe("MatchingQuestion", () => {
   const mockPairs = [
-    { word: "Oluwa", meaning: "god" },
-    { word: "Omutu", meaning: "person" },
-    { word: "Ozila", meaning: "work" },
+    { Oshikwanyama: "Oluwa", English: "god" },
+    { Oshikwanyama: "Omutu", English: "person" },
+    { Oshikwanyama: "Ozila", English: "work" },
   ];
   const mockAnswers: { wordIdx: number; meaningIdx: number }[] = [];
   const mockOnAnswerChange = jest.fn();
@@ -25,7 +25,7 @@ describe("MatchingQuestion", () => {
     );
 
     mockPairs.forEach((pair) => {
-      expect(screen.getByText(pair.word)).toBeTruthy();
+      expect(screen.getByText(pair.Oshikwanyama)).toBeTruthy();
     });
   });
 
@@ -39,7 +39,7 @@ describe("MatchingQuestion", () => {
     );
 
     mockPairs.forEach((pair) => {
-      expect(screen.getByText(pair.meaning)).toBeTruthy();
+      expect(screen.getByText(pair.English)).toBeTruthy();
     });
   });
 

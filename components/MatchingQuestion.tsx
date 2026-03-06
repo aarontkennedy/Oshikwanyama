@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 
 interface MatchingPair {
-  word: string;
-  meaning: string;
+  Oshikwanyama: string;
+  English: string;
 }
 
 interface MatchingQuestionProps {
@@ -24,7 +24,7 @@ export function MatchingQuestion({
   // Shuffle meanings while keeping track of original indices
   const shuffledMeanings = useMemo(() => {
     const withIndices = pairs.map((p, i) => ({
-      text: p.meaning,
+      text: p.English,
       originalIdx: i,
     }));
     // Fisher-Yates shuffle
@@ -77,7 +77,9 @@ export function MatchingQuestion({
               ]}
               testID={`matching-word-${i}`}
             >
-              <ThemedText style={styles.itemText}>{pair.word}</ThemedText>
+              <ThemedText style={styles.itemText}>
+                {pair.Oshikwanyama}
+              </ThemedText>
             </Pressable>
           ))}
         </ThemedView>
