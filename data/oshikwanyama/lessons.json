@@ -2,59 +2,664 @@
   {
     "id": 1,
     "title": {
-      "Oshikwanyama": "Wa lele po?",
-      "English": "Greetings"
+      "English": "Greetings",
+      "Oshikwanyama": "Wa lele po?"
     },
-    "description": "Learn basic greetings in Oshikwanyama",
-    "dialogs": [
+    "description": "Greet first before asking or saying anything. Always take time and shake hands when greeting. Greet elders first. Words like Meme (mother), Tate (father), and especially Meekulu (grandmother) and Tatekulu (grandfather) show respect and are just as important as the greeting itself.\n\nLiterally, if someone says Wa lele po, they are asking if you laid down last night. Wa uhala po asks if you spent the afternoon, and wa tokelwa po asks if the sky became white for you at dusk.",
+    "vocab": [
       {
-        "title": "Greeting",
-        "conversation": [
-          { "speaker": "Person A", "text": "Wa uhala po?" },
-          { "speaker": "Person B", "text": "Onawa" }
-        ]
+        "English": "Good ",
+        "Oshikwanyama": "Nawa"
+      },
+      {
+        "English": "Morning",
+        "Oshikwanyama": "Ongula"
+      },
+      {
+        "English": "Afternoon (mid-day heat) ",
+        "Oshikwanyama": "Omutenya"
+      },
+      {
+        "English": "Afternoon (late afternoon) ",
+        "Oshikwanyama": "Komatango"
+      },
+      {
+        "English": "Evening",
+        "Oshikwanyama": "Onguloshi"
+      },
+      {
+        "English": "Night",
+        "Oshikwanyama": "Oufiku"
+      },
+      {
+        "English": "Friends",
+        "Oshikwanyama": "ooKaume"
+      },
+      {
+        "English": "Yes",
+        "Oshikwanyama": "Ehee / Ee / Heeno"
+      },
+      {
+        "English": "No",
+        "Oshikwanyama": "Ahowe / Aaye"
+      },
+      {
+        "English": "OK",
+        "Oshikwanyama": "Eewa"
+      },
+      {
+        "English": "Good morning ",
+        "Oshikwanyama": "Wa lele po?"
+      },
+      {
+        "English": "Good afternoon ",
+        "Oshikwanyama": "Wa uhala po?"
+      },
+      {
+        "English": "Good evening",
+        "Oshikwanyama": "Wa tokelwa po?"
+      },
+      {
+        "English": "Hello (informal)",
+        "Oshikwanyama": "Ongaipi "
+      },
+      {
+        "English": "Go well ",
+        "Oshikwanyama": "Enda po nawa"
+      },
+      {
+        "English": "Stay well ",
+        "Oshikwanyama": "Kala po nawa"
+      },
+      {
+        "English": "Sleep well (someone leaving for bed) ",
+        "Oshikwanyama": "Ka nangale po nawa"
+      },
+      {
+        "English": "Sleep well (someone you're leaving) ",
+        "Oshikwanyama": "Nangala po nawa"
+      },
+      {
+        "English": "Really/rather - used to add emphasis",
+        "Oshikwanyama": "Ngaa/tuu"
       }
     ],
-    "vocab": [
-      { "Oshikwanyama": "Wa uhala po", "English": "Hello/How are you" },
-      { "Oshikwanyama": "Ongipi", "English": "What is your name" },
-      { "Oshikwanyama": "Onawa", "English": "Fine/Good" },
-      { "Oshikwanyama": "Tangi", "English": "Thank you" }
+    "dialogs": [
+      {
+        "title": "Ongula",
+        "conversation": [
+          {
+            "speaker": "Tate",
+            "text": "Wa lele po Meme?"
+          },
+          {
+            "speaker": "Meme",
+            "text": "Ehee."
+          },
+          {
+            "speaker": "Tate",
+            "text": "Nawa tuu?"
+          },
+          {
+            "speaker": "Meme",
+            "text": "Ehee, ove wa lele po Tate?"
+          },
+          {
+            "speaker": "Tate",
+            "text": "Ehee."
+          },
+          {
+            "speaker": "Meme",
+            "text": "Nawa uuu?"
+          },
+          {
+            "speaker": "Tate",
+            "text": "Ehee, onawa."
+          }
+        ]
+      },
+      {
+        "title": "Omutenya",
+        "conversation": [
+          {
+            "speaker": "Pandu",
+            "text": "Wa ___ po Meme?"
+          },
+          {
+            "speaker": "Meme",
+            "text": "___"
+          },
+          {
+            "speaker": "Pandu",
+            "text": "Nawa tuu?"
+          },
+          {
+            "speaker": "Meme",
+            "text": "Ehee, ove wa ___ po?"
+          },
+          {
+            "speaker": "Pandu",
+            "text": "Ehee."
+          },
+          {
+            "speaker": "Meme",
+            "text": "Onawa too?"
+          },
+          {
+            "speaker": "Pandu",
+            "text": "___"
+          }
+        ]
+      }
     ],
     "questions": [
       {
         "type": "multiple-choice",
-        "prompt": "How do you say 'Hello' in Oshikwanyama?",
-        "options": ["Wa uhala po", "Ongipi", "Meme", "Tate"],
-        "correct": "Wa uhala po",
-        "explanation": "'Wa uhala po' is a common greeting in Oshikwanyama, similar to saying 'Hello' or 'How are you'"
+        "prompt": "Good",
+        "options": ["Onawa", "Nai", "Eewa", "ooKaume"],
+        "correct": "Onawa",
+        "explanation": ""
       },
       {
         "type": "multiple-choice",
-        "prompt": "What does 'Onawa' mean?",
-        "options": ["Goodbye", "Fine/Good", "Thank you", "Yes"],
-        "correct": "Fine/Good",
-        "explanation": "'Onawa' is used to respond when someone asks how you are, meaning 'I am fine' or 'I am good'"
+        "prompt": "Morning",
+        "options": ["Ongula", "Omutenya", "Komatango", "Onguloshi"],
+        "correct": "Ongula",
+        "explanation": ""
       },
       {
         "type": "matching",
-        "prompt": "Match the Oshikwanyama greeting with its meaning",
+        "prompt": "Match the Oshikwanyama with the English",
         "pairs": [
-          { "Oshikwanyama": "Wa uhala po", "English": "Hello/How are you" },
-          { "Oshikwanyama": "Ongipi", "English": "What is your name" },
-          { "Oshikwanyama": "Tangi", "English": "Thank you" }
+          {
+            "English": "Morning",
+            "Oshikwanyama": "Ongula"
+          },
+          {
+            "English": "Afternoon (mid-day heat) ",
+            "Oshikwanyama": "Omutenya"
+          },
+          {
+            "English": "Afternoon (late afternoon) ",
+            "Oshikwanyama": "Komatango"
+          },
+          {
+            "English": "Evening",
+            "Oshikwanyama": "Onguloshi"
+          },
+          {
+            "English": "Night",
+            "Oshikwanyama": "Oufiku"
+          }
         ]
       },
       {
         "type": "fill-blank",
-        "prompt": "Complete the greeting: Wa uhala ___?",
-        "answer": "po",
-        "hint": "The greeting ends with this word"
+        "prompt": "Ongaipi",
+        "answer": "Hello",
+        "hint": ""
       },
       {
+        "type": "matching",
+        "prompt": "Match the Oshikwanyama with the English greeting",
+        "pairs": [
+          {
+            "English": "Good morning ",
+            "Oshikwanyama": "Wa lele po?"
+          },
+          {
+            "English": "Good afternoon",
+            "Oshikwanyama": "Wa uhala po?"
+          },
+          {
+            "English": "Good evening ",
+            "Oshikwanyama": "Wa tokelwa po?"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "prompt": "Match the Oshikwanyama with the English",
+        "pairs": [
+          {
+            "English": "Go well ",
+            "Oshikwanyama": "Enda po nawa"
+          },
+          {
+            "English": "Stay well",
+            "Oshikwanyama": "Kala po nawa"
+          },
+          {
+            "English": "Sleep well (someone leaving for bed)",
+            "Oshikwanyama": "Ka nangale po nawa"
+          },
+          {
+            "English": "Sleep well (someone you're leaving)",
+            "Oshikwanyama": "Nangala po nawa"
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "What is always the correct response to a greeting?",
+        "options": ["ooKaume", "Ehee", "Ahowe", "Ongaipi"],
+        "correct": "Ehee",
+        "explanation": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": {
+      "English": "Numbers",
+      "Oshikwanyama": "Imwe, mbali, nhatu"
+    },
+    "description": "",
+    "vocab": [
+      {
+        "English": "One",
+        "Oshikwanyama": "Imwe"
+      },
+      {
+        "English": "Two",
+        "Oshikwanyama": "Mbali"
+      },
+      {
+        "English": "Three",
+        "Oshikwanyama": "Nhatu"
+      },
+      {
+        "English": "Four",
+        "Oshikwanyama": "Nhee"
+      },
+      {
+        "English": "Five",
+        "Oshikwanyama": "Nhano"
+      },
+      {
+        "English": "Six",
+        "Oshikwanyama": "Hamano"
+      },
+      {
+        "English": "Seven",
+        "Oshikwanyama": "Heyali"
+      },
+      {
+        "English": "Eight",
+        "Oshikwanyama": "Hetatu"
+      },
+      {
+        "English": "Nine",
+        "Oshikwanyama": "Omuwoi"
+      },
+      {
+        "English": "Ten",
+        "Oshikwanyama": "Omulongo"
+      },
+      {
+        "English": "Eleven (ten and one)",
+        "Oshikwanyama": "Omulongo na imwe"
+      },
+      {
+        "English": "Twelve",
+        "Oshikwanyama": "Omulongo na mbali"
+      },
+      {
+        "English": "Thirteen",
+        "Oshikwanyama": "Omulongo na nhatu"
+      },
+      {
+        "English": "Twenty (two tens)",
+        "Oshikwanyama": "Omilongo mbali"
+      },
+      {
+        "English": "Twenty-five (Two tens and five)",
+        "Oshikwanyama": "Omilongo mbali na nhano"
+      },
+      {
+        "English": "Thirty (Three tens) ",
+        "Oshikwanyama": "Omilongo nhatu"
+      },
+      {
+        "English": "One hundred ",
+        "Oshikwanyama": "Efele"
+      },
+      {
+        "English": "Two hundred ",
+        "Oshikwanyama": "Omafele avali"
+      },
+      {
+        "English": "Three hundred ",
+        "Oshikwanyama": "Omafele atatu"
+      },
+      {
+        "English": "One thousand ",
+        "Oshikwanyama": "Eyovi"
+      },
+      {
+        "English": "Two thousand ",
+        "Oshikwanyama": "Omayovi avali"
+      }
+    ],
+    "dialogs": [],
+    "questions": [
+      {
         "type": "ordering",
-        "prompt": "Order the words to form the greeting 'How are you?'",
-        "items": ["Wa", "uhala", "po"]
+        "prompt": "",
+        "items": ["Imwe", "Mbali", "Nhatu", "Nhee", "Nhano", "Hamano"]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Seven",
+        "answer": "Heyali",
+        "hint": ""
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Eight",
+        "answer": "Hetatu",
+        "hint": ""
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "9",
+        "answer": "Omuwoi",
+        "hint": ""
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Omulongo",
+        "options": ["1", "10", "100", "1,000"],
+        "correct": "10",
+        "explanation": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "100",
+            "Oshikwanyama": "Efele"
+          },
+          {
+            "English": "200",
+            "Oshikwanyama": "Omafele avali"
+          },
+          {
+            "English": "300",
+            "Oshikwanyama": "Omafele atatu"
+          }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "1,000",
+        "answer": "Eyovi",
+        "hint": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": {
+      "English": "Pronouns",
+      "Oshikwanyama": "Ame, Ovee, Ye"
+    },
+    "description": "",
+    "vocab": [
+      {
+        "English": "I",
+        "Oshikwanyama": "Ame"
+      },
+      {
+        "English": "You",
+        "Oshikwanyama": "Ove"
+      },
+      {
+        "English": "He/She",
+        "Oshikwanyama": "Ye"
+      },
+      {
+        "English": "We",
+        "Oshikwanyama": "Fye"
+      },
+      {
+        "English": "You all",
+        "Oshikwanyama": "Nye"
+      },
+      {
+        "English": "They",
+        "Oshikwanyama": "Vo"
+      },
+      {
+        "English": "I’m ___ What’s your name? ",
+        "Oshikwanyama": "Aame ___ Oove lye?"
+      },
+      {
+        "English": "I don’t understand...",
+        "Oshikwanyama": "Kandi udite ko..."
+      },
+      {
+        "English": "I don't know ",
+        "Oshikwanyama": "Kandi shi shii"
+      }
+    ],
+    "dialogs": [],
+    "questions": [
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "I’m ___ What’s your name? ",
+            "Oshikwanyama": "Aame ___ Oove lye?"
+          },
+          {
+            "English": "I don’t understand...",
+            "Oshikwanyama": "Kandi udite ko..."
+          },
+          {
+            "English": "I don't know ",
+            "Oshikwanyama": "Kandi shi shii"
+          }
+        ]
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "I",
+            "Oshikwanyama": "Ame"
+          },
+          {
+            "English": "You",
+            "Oshikwanyama": "Ove"
+          },
+          {
+            "English": "He/She",
+            "Oshikwanyama": "Ye"
+          }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Ame",
+        "answer": "I",
+        "hint": ""
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "You",
+        "options": ["Ove", "Ye", "Fye", "Nye"],
+        "correct": "Ove",
+        "explanation": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "We",
+            "Oshikwanyama": "Fye"
+          },
+          {
+            "English": "You all",
+            "Oshikwanyama": "Nye"
+          },
+          {
+            "English": "They",
+            "Oshikwanyama": "Vo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": {
+      "English": "Food and drink",
+      "Oshikwanyama": "Onda fya ondjala!"
+    },
+    "description": "",
+    "vocab": [
+      {
+        "English": "I’m hungry. ",
+        "Oshikwanyama": "Onda fya ondjala."
+      },
+      {
+        "English": "I’m thirsty. ",
+        "Oshikwanyama": "Onda fya enota."
+      },
+      {
+        "English": "I’m full. ",
+        "Oshikwanyama": "Onda kuta."
+      },
+      {
+        "English": "I’m finished. ",
+        "Oshikwanyama": "Onda mana."
+      },
+      {
+        "English": "I’m tired, I want to go to sleep. ",
+        "Oshikwanyama": "Onda loloka, onda hala okukofa."
+      },
+      {
+        "English": "Where is the water? ",
+        "Oshikwanyama": "Omeva oku li peni?"
+      },
+      {
+        "English": "I don’t eat meat. ",
+        "Oshikwanyama": "Ihandi li ombelela."
+      },
+      {
+        "English": "The food is very good! ",
+        "Oshikwanyama": "Oikulya inyenye! / Oikulya iwa"
+      },
+      {
+        "English": "Thank you very much. ",
+        "Oshikwanyama": "Tangi unene."
+      },
+      {
+        "English": "Where is the latrine? ",
+        "Oshikwanyama": "Okandjuwo oke li peni?"
+      },
+      {
+        "English": "I need ___",
+        "Oshikwanyama": "Onda pumbwa ___"
+      },
+      {
+        "English": "I want ___",
+        "Oshikwanyama": "Onda hala ___"
+      },
+      {
+        "English": "May I have ___",
+        "Oshikwanyama": "Kwafe nge / Kwafele nge ___"
+      },
+      {
+        "English": "Water",
+        "Oshikwanyama": "Omeva"
+      },
+      {
+        "English": "To eat",
+        "Oshikwanyama": "Okulya"
+      },
+      {
+        "English": "Beer",
+        "Oshikwanyama": "Obiila"
+      }
+    ],
+    "dialogs": [],
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "Onda fya ondjala.",
+        "options": [
+          "I’m hungry. ",
+          "I’m thirsty. ",
+          "I’m full. ",
+          "I’m finished. "
+        ],
+        "correct": "I’m hungry. ",
+        "explanation": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "I’m hungry. ",
+            "Oshikwanyama": "Onda fya ondjala."
+          },
+          {
+            "English": "I’m thirsty. ",
+            "Oshikwanyama": "Onda fya enota."
+          },
+          {
+            "English": "I’m full. ",
+            "Oshikwanyama": "Onda kuta."
+          },
+          {
+            "English": "I’m finished. ",
+            "Oshikwanyama": "Onda mana."
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Onda loloka",
+        "options": [
+          "I’m tired.",
+          "I want to go to sleep. ",
+          "Where is the water? ",
+          "I don’t eat meat. "
+        ],
+        "correct": "I’m tired.",
+        "explanation": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "The food is very good!",
+            "Oshikwanyama": "Oikulya inyenye!"
+          },
+          {
+            "English": "Thank you very much. ",
+            "Oshikwanyama": "Tangi unene."
+          },
+          {
+            "English": "Where is the latrine? ",
+            "Oshikwanyama": "Okandjuwo oke li peni?"
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Meat",
+        "options": ["Ombelela", "Obiila", "Omeva", "Ekwafo"],
+        "correct": "Ombelela",
+        "explanation": ""
       }
     ]
   }

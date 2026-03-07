@@ -17,6 +17,9 @@ export function FillBlankQuestion({
       value={value}
       placeholder={placeholder}
       onChangeText={onChangeText}
+      autoCorrect={false}
+      autoCapitalize="none"
+      spellCheck={false}
       testID="fill-blank-input"
     />
   );

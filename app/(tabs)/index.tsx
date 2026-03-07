@@ -15,7 +15,7 @@ export default function HomeScreen() {
 
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#131617" }}
+      headerBackgroundColor={{ light: "white", dark: "#131617" }}
       headerImage={
         <Image
           source={require("@/assets/images/partial-react-logo.png")}
@@ -29,7 +29,7 @@ export default function HomeScreen() {
         keyExtractor={(item) => String(item.id)}
         ListHeaderComponent={
           <ThemedView style={styles.oshikwanyamaContainer}>
-            <ThemedText type="title">Tjika Oshikwanyama</ThemedText>
+            <ThemedText type="title">Oshikwanyama</ThemedText>
             <ThemedText style={styles.oshLead}>
               Learn Oshikwanyama — simple lessons, proverbs and quizzes.
             </ThemedText>
@@ -39,8 +39,12 @@ export default function HomeScreen() {
         renderItem={({ item }) => (
           <Link href={`/oshikwanyama/lessons/${item.id}`}>
             <Link.Trigger>
-              <ThemedText type="subtitle">{item.title.Oshikwanyama}</ThemedText>
-              <ThemedText>{item.description}</ThemedText>
+              <ThemedView style={styles.lessonButton}>
+                <ThemedText type="subtitle">
+                  {item.title.Oshikwanyama}
+                </ThemedText>
+                <ThemedText>{item.title.English}</ThemedText>
+              </ThemedView>
             </Link.Trigger>
           </Link>
         )}
@@ -66,11 +70,19 @@ const styles = StyleSheet.create({
   },
   oshikwanyamaContainer: {
     gap: 8,
-    paddingHorizontal: 12,
+    // paddingHorizontal: 12,
     marginBottom: 8,
   },
   oshLead: {
     marginBottom: 8,
+  },
+  lessonButton: {
+    backgroundColor: "#A1CEDC",
+    padding: 16,
+    borderRadius: 8,
+    marginVertical: 4,
+    gap: 4,
+    width: "100%",
   },
   proverbsLink: {
     marginTop: 8,

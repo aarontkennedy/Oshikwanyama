@@ -36,12 +36,30 @@
     <div class="section">
       <h2>Lesson Details</h2>
       <label>ID: <input type="number" id="lessonId" /></label><br />
-      <label>Title English: <input type="text" id="titleEnglish" /></label
+      <label
+        >Title English:
+        <input
+          type="text"
+          id="titleEnglish"
+          spellcheck="false"
+          autocorrect="off" /></label
       ><br />
       <label
-        >Title Oshikwanyama: <input type="text" id="titleOshikwanyama" /></label
+        >Title Oshikwanyama:
+        <input
+          type="text"
+          id="titleOshikwanyama"
+          spellcheck="false"
+          autocorrect="off" /></label
       ><br />
-      <label>Description: <textarea id="description"></textarea></label>
+      <label
+        >Description:
+        <textarea
+          id="description"
+          spellcheck="false"
+          autocorrect="off"
+        ></textarea>
+      </label>
     </div>
 
     <div class="section">
@@ -75,8 +93,8 @@
         const div = document.createElement("div");
         div.className = "vocab-item";
         div.innerHTML = `
-                <label>English: <input type="text" class="vocabEnglish"></label>
-                <label>Oshikwanyama: <input type="text" class="vocabOshikwanyama"></label>
+                <label>English: <input type="text" class="vocabEnglish" spellcheck="false" autocorrect="off"></label>
+                <label>Oshikwanyama: <input type="text" class="vocabOshikwanyama" spellcheck="false" autocorrect="off"></label>
                 <button onclick="removeItem(this)">Remove</button>
             `;
         document.getElementById("vocabList").appendChild(div);
@@ -87,7 +105,7 @@
         const div = document.createElement("div");
         div.className = "dialog-item";
         div.innerHTML = `
-                <label>Title: <input type="text" class="dialogTitle"></label>
+                <label>Title: <input type="text" class="dialogTitle" spellcheck="false" autocorrect="off"></label>
                 <div class="conversation"></div>
                 <button onclick="addConversation(this.previousElementSibling)">Add Conversation</button>
                 <button onclick="removeItem(this.parentElement)">Remove Dialog</button>
@@ -98,8 +116,8 @@
       function addConversation(container) {
         const convDiv = document.createElement("div");
         convDiv.innerHTML = `
-                <label>Speaker: <input type="text" class="speaker"></label>
-                <label>Text: <input type="text" class="text"></label>
+                <label>Speaker: <input type="text" class="speaker" spellcheck="false" autocorrect="off"></label>
+                <label>Text: <input type="text" class="text" spellcheck="false" autocorrect="off"></label>
                 <button onclick="removeItem(this.parentElement)">Remove</button>
             `;
         container.appendChild(convDiv);
@@ -116,7 +134,7 @@
                     <option value="fill-blank">Fill Blank</option>
                     <option value="ordering">Ordering</option>
                 </select></label>
-                <label>Prompt: <input type="text" class="prompt"></label>
+                <label>Prompt: <input type="text" class="prompt" spellcheck="false" autocorrect="off"></label>
                 <div class="questionDetails"></div>
                 <button onclick="removeItem(this.parentElement)">Remove Question</button>
             `;
@@ -132,7 +150,7 @@
           details.innerHTML = `
                     <div class="options"></div>
                     <button onclick="addOption(this.previousElementSibling)">Add Option</button>
-                    <label>Correct: <input type="text" class="correct"></label>
+                    <label>Correct: <input type="text" class="correct" spellcheck="false" autocorrect="off"></label>
                     <label>Explanation: <textarea class="explanation"></textarea></label>
                 `;
         } else if (type === "matching") {
@@ -142,8 +160,8 @@
                 `;
         } else if (type === "fill-blank") {
           details.innerHTML = `
-                    <label>Answer: <input type="text" class="answer"></label>
-                    <label>Hint: <input type="text" class="hint"></label>
+                    <label>Answer: <input type="text" class="answer" spellcheck="false" autocorrect="off"></label>
+                    <label>Hint: <input type="text" class="hint" spellcheck="false" autocorrect="off"></label>
                 `;
         } else if (type === "ordering") {
           details.innerHTML = `
@@ -155,15 +173,15 @@
 
       function addOption(container) {
         const optDiv = document.createElement("div");
-        optDiv.innerHTML = `<input type="text" class="option"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
+        optDiv.innerHTML = `<input type="text" class="option" spellcheck="false" autocorrect="off"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
         container.appendChild(optDiv);
       }
 
       function addPair(container) {
         const pairDiv = document.createElement("div");
         pairDiv.innerHTML = `
-                <label>English: <input type="text" class="pairEnglish"></label>
-                <label>Oshikwanyama: <input type="text" class="pairOshikwanyama"></label>
+                <label>English: <input type="text" class="pairEnglish" spellcheck="false" autocorrect="off"></label>
+                <label>Oshikwanyama: <input type="text" class="pairOshikwanyama" spellcheck="false" autocorrect="off"></label>
                 <button onclick="removeItem(this.parentElement)">Remove</button>
             `;
         container.appendChild(pairDiv);
@@ -171,7 +189,7 @@
 
       function addItem(container) {
         const itemDiv = document.createElement("div");
-        itemDiv.innerHTML = `<input type="text" class="item"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
+        itemDiv.innerHTML = `<input type="text" class="item" spellcheck="false" autocorrect="off"> <button onclick="removeItem(this.parentElement)">Remove</button>`;
         container.appendChild(itemDiv);
       }
 
