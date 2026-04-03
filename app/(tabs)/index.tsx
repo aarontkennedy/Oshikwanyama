@@ -41,7 +41,7 @@ export default function HomeScreen() {
             <Link.Trigger>
               <ThemedView style={styles.lessonButton}>
                 <ThemedText type="subtitle">
-                  {item.title.Oshikwanyama}
+                  {`${item.id}. ${item.title.Oshikwanyama}`}
                 </ThemedText>
                 <ThemedText>{item.title.English}</ThemedText>
               </ThemedView>

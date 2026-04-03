@@ -5,7 +5,7 @@
       "English": "Greetings",
       "Oshikwanyama": "Wa lele po?"
     },
-    "description": "Greet first before asking or saying anything. Always take time and shake hands when greeting. Greet elders first. Words like Meme (mother), Tate (father), and especially Meekulu (grandmother) and Tatekulu (grandfather) show respect and are just as important as the greeting itself.\n\nLiterally, if someone says Wa lele po, they are asking if you laid down last night. Wa uhala po asks if you spent the afternoon, and wa tokelwa po asks if the sky became white for you at dusk.",
+    "description": "Greeting in Oshikwanyama is a sign of respect and should come before any  conversation. It’s customary to take your time and shake hands. When greeting a group, elders are always greeted first.\n\nTerms like Meme (mother), Tate (father), Meekulu (grandmother), and Tatekulu (grandfather) are respectful and commonly used when addressing others and are just as important as the greeting itself.\n\n'Wa lele po?' literally asks if someone 'laid down last night' (slept well), 'Wa uhala po?' asks about their afternoon, and 'Wa tokelwa po?' refers to how their evening went, literally 'Did the sky turn white for you'. The answer is always yes.",
     "vocab": [
       {
         "English": "Good ",
@@ -123,11 +123,11 @@
         "conversation": [
           {
             "speaker": "Pandu",
-            "text": "Wa ___ po Meme?"
+            "text": "Wa *uhala* po Meme?"
           },
           {
             "speaker": "Meme",
-            "text": "___"
+            "text": "*Ehee*"
           },
           {
             "speaker": "Pandu",
@@ -135,7 +135,7 @@
           },
           {
             "speaker": "Meme",
-            "text": "Ehee, ove wa ___ po?"
+            "text": "Ehee, ove wa *uhala* po?"
           },
           {
             "speaker": "Pandu",
@@ -147,7 +147,7 @@
           },
           {
             "speaker": "Pandu",
-            "text": "___"
+            "text": "*Ehee*"
           }
         ]
       }
@@ -254,7 +254,7 @@
       "English": "Numbers",
       "Oshikwanyama": "Imwe, mbali, nhatu"
     },
-    "description": "",
+    "description": "Learn to count and use numbers in everyday situations.",
     "vocab": [
       {
         "English": "One",
@@ -405,7 +405,7 @@
       "English": "Pronouns",
       "Oshikwanyama": "Ame, Ovee, Ye"
     },
-    "description": "",
+    "description": "Kwanyama pronouns are similar to personal pronouns in English.  Ye is used for both he and she.",
     "vocab": [
       {
         "English": "I",
@@ -432,11 +432,11 @@
         "Oshikwanyama": "Vo"
       },
       {
-        "English": "I’m ___ What’s your name? ",
-        "Oshikwanyama": "Aame ___ Oove lye?"
+        "English": "I'm __. What's your name? ",
+        "Oshikwanyama": "Aame __. Oove lye?"
       },
       {
-        "English": "I don’t understand...",
+        "English": "I don't understand...",
         "Oshikwanyama": "Kandi udite ko..."
       },
       {
@@ -451,11 +451,11 @@
         "prompt": "",
         "pairs": [
           {
-            "English": "I’m ___ What’s your name? ",
-            "Oshikwanyama": "Aame ___ Oove lye?"
+            "English": "I'm Nangula. What's your name? ",
+            "Oshikwanyama": "Aame Nangula. Oove lye?"
           },
           {
-            "English": "I don’t understand...",
+            "English": "I don't understand...",
             "Oshikwanyama": "Kandi udite ko..."
           },
           {
@@ -521,26 +521,26 @@
       "English": "Food and drink",
       "Oshikwanyama": "Onda fya ondjala!"
     },
-    "description": "",
+    "description": "Basic eating-related phrases",
     "vocab": [
       {
-        "English": "I’m hungry. ",
+        "English": "I'm hungry.",
         "Oshikwanyama": "Onda fya ondjala."
       },
       {
-        "English": "I’m thirsty. ",
+        "English": "I'm thirsty. ",
         "Oshikwanyama": "Onda fya enota."
       },
       {
-        "English": "I’m full. ",
+        "English": "I'm full. ",
         "Oshikwanyama": "Onda kuta."
       },
       {
-        "English": "I’m finished. ",
+        "English": "I'm finished. ",
         "Oshikwanyama": "Onda mana."
       },
       {
-        "English": "I’m tired, I want to go to sleep. ",
+        "English": "I'm tired, I want to go to sleep. ",
         "Oshikwanyama": "Onda loloka, onda hala okukofa."
       },
       {
@@ -548,7 +548,7 @@
         "Oshikwanyama": "Omeva oku li peni?"
       },
       {
-        "English": "I don’t eat meat. ",
+        "English": "I don't eat meat. ",
         "Oshikwanyama": "Ihandi li ombelela."
       },
       {
@@ -594,12 +594,12 @@
         "type": "multiple-choice",
         "prompt": "Onda fya ondjala.",
         "options": [
-          "I’m hungry. ",
-          "I’m thirsty. ",
-          "I’m full. ",
-          "I’m finished. "
+          "I'm hungry. ",
+          "I'm thirsty. ",
+          "I'm full. ",
+          "I'm finished. "
         ],
-        "correct": "I’m hungry. ",
+        "correct": "I'm hungry. ",
         "explanation": ""
       },
       {
@@ -607,19 +607,19 @@
         "prompt": "",
         "pairs": [
           {
-            "English": "I’m hungry. ",
+            "English": "I'm hungry. ",
             "Oshikwanyama": "Onda fya ondjala."
           },
           {
-            "English": "I’m thirsty. ",
+            "English": "I'm thirsty. ",
             "Oshikwanyama": "Onda fya enota."
           },
           {
-            "English": "I’m full. ",
+            "English": "I'm full. ",
             "Oshikwanyama": "Onda kuta."
           },
           {
-            "English": "I’m finished. ",
+            "English": "I'm finished. ",
             "Oshikwanyama": "Onda mana."
           }
         ]
@@ -628,12 +628,12 @@
         "type": "multiple-choice",
         "prompt": "Onda loloka",
         "options": [
-          "I’m tired.",
+          "I'm tired.",
           "I want to go to sleep. ",
           "Where is the water? ",
-          "I don’t eat meat. "
+          "I don't eat meat. "
         ],
-        "correct": "I’m tired.",
+        "correct": "I'm tired.",
         "explanation": ""
       },
       {
@@ -660,6 +660,217 @@
         "options": ["Ombelela", "Obiila", "Omeva", "Ekwafo"],
         "correct": "Ombelela",
         "explanation": ""
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": {
+      "English": "Daily necessities ",
+      "Oshikwanyama": "Okandjuwo oke li peni?"
+    },
+    "description": "",
+    "vocab": [
+      {
+        "English": "Where is the latrine? ",
+        "Oshikwanyama": "Okandjuwo oke li peni?"
+      },
+      {
+        "English": "Water",
+        "Oshikwanyama": "Omeva"
+      },
+      {
+        "English": "Basin",
+        "Oshikwanyama": "Oshiyaxa"
+      },
+      {
+        "English": "To sleep ",
+        "Oshikwanyama": "Okukofa"
+      },
+      {
+        "English": "To bathe ",
+        "Oshikwanyama": "Okulikosha"
+      },
+      {
+        "English": "Body soap ",
+        "Oshikwanyama": "Ofewa (yokulikosha)"
+      },
+      {
+        "English": "Candle",
+        "Oshikwanyama": "Okalexita"
+      },
+      {
+        "English": "Key",
+        "Oshikwanyama": "Oshapi / Oshipatululo"
+      },
+      {
+        "English": "And / With ",
+        "Oshikwanyama": "Na"
+      },
+      {
+        "English": "Also / Still / Again ",
+        "Oshikwanyama": "Natango"
+      },
+      {
+        "English": "Or",
+        "Oshikwanyama": "Ile"
+      },
+      {
+        "English": "I don't know",
+        "Oshikwanyama": "Kandi shi shii"
+      }
+    ],
+    "dialogs": [],
+    "questions": [
+      {
+        "type": "multiple-choice",
+        "prompt": "Where it the bathroom?",
+        "options": [
+          "Okandjuwo oke li peni?",
+          "Onda pumbwa ekwafo",
+          "Kandi shi shii",
+          "Ondi hole ombelela"
+        ],
+        "correct": "Okandjuwo oke li peni?",
+        "explanation": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "To sleep ",
+            "Oshikwanyama": "Okukofa"
+          },
+          {
+            "English": "To eat",
+            "Oshikwanyama": "Okulya"
+          },
+          {
+            "English": "To bathe",
+            "Oshikwanyama": "Okulikosha"
+          }
+        ]
+      },
+      {
+        "type": "fill-blank",
+        "prompt": "Okalexita",
+        "answer": "Candle",
+        "hint": ""
+      },
+      {
+        "type": "matching",
+        "prompt": "",
+        "pairs": [
+          {
+            "English": "And",
+            "Oshikwanyama": "Na"
+          },
+          {
+            "English": "Also",
+            "Oshikwanyama": "Natango"
+          },
+          {
+            "English": "Or",
+            "Oshikwanyama": "Ile"
+          }
+        ]
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "Onda pumbwa omeva",
+        "options": [
+          "I need water.",
+          "I want water.",
+          "I eat meat.",
+          "Give me water."
+        ],
+        "correct": "I need water.",
+        "explanation": ""
+      },
+      {
+        "type": "multiple-choice",
+        "prompt": "I want to sleep.",
+        "options": [
+          "Onda hala okukofa",
+          "Onda pumbwa okukofa",
+          "Onda hala okulikosha",
+          "Onda fya ondjala"
+        ],
+        "correct": "Onda hala okukofa",
+        "explanation": ""
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": {
+      "English": "Action Verbs",
+      "Oshikwanyama": "Something..."
+    },
+    "description": "",
+    "vocab": [],
+    "dialogs": [],
+    "questions": [],
+    "conjugations": [
+      {
+        "title": "Subject Concords for Active Verbs",
+        "rows": [
+          {
+            "label": "Ame",
+            "past": "Onda",
+            "pastNegative": "Inandi",
+            "present": "Ohandi/Ohai",
+            "presentNegative": "Itandi",
+            "future": "Ohandi ka",
+            "futureNegative": "Itandi ka"
+          },
+          {
+            "label": "Ove",
+            "past": "Owa",
+            "pastNegative": "Ino",
+            "present": "Oto",
+            "presentNegative": "Ito",
+            "future": "Oto ka",
+            "futureNegative": "Ito ka"
+          },
+          {
+            "label": "Ye",
+            "past": "Okwa",
+            "pastNegative": "Ina",
+            "present": "Ota",
+            "presentNegative": "Ita",
+            "future": "Ota ka",
+            "futureNegative": "Ita ka"
+          },
+          {
+            "label": "Fye",
+            "past": "Otwa",
+            "pastNegative": "Inatu",
+            "present": "Ohatu",
+            "presentNegative": "Itatu",
+            "future": "Ohatu ka",
+            "futureNegative": "Itatu ka"
+          },
+          {
+            "label": "Nye",
+            "past": "Omwa",
+            "pastNegative": "Inamu",
+            "present": "Otamu",
+            "presentNegative": "Itamu",
+            "future": "Otamu ka",
+            "futureNegative": "Itamu ka"
+          },
+          {
+            "label": "Vo",
+            "past": "Ova",
+            "pastNegative": "Inaa/Inava",
+            "present": "Otaa/Otava",
+            "presentNegative": "Itaa/Itava",
+            "future": "Otaa/Otava ka",
+            "futureNegative": "Itaa/Itava ka"
+          }
+        ]
       }
     ]
   }

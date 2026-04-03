@@ -6,19 +6,10 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import lessons from "@/data/oshikwanyama/lessons.json";
 import { GameContext } from "@/GameContext";
+import { getQuizQuestions } from "@/helpers/quiz";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import React, { useContext, useLayoutEffect, useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
-
-// simple Fisher–Yates shuffle for arrays
-export function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 export default function QuizScreen() {
   const params = useLocalSearchParams<{ id: string }>();
@@ -59,7 +50,7 @@ export default function QuizScreen() {
   }, [lesson.title.Oshikwanyama, navigation]);
 
   // create a shuffled copy of the questions so order is unpredictable
-  const [questions] = useState(() => shuffleArray(lesson.questions));
+  const [questions] = useState(() => getQuizQuestions(id));
   const question = questions[index];
 
   // Determine whether matching question is fully and correctly answered

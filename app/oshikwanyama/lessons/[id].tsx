@@ -1,3 +1,4 @@
+import { ConjugationTableSection } from "@/components/ConjugationTableSection";
 import { DialogsSection } from "@/components/DialogsSection";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -30,47 +31,78 @@ export default function LessonDetail() {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <ThemedView style={styles.header}>
-        <ThemedText type="title">{lesson.title.Oshikwanyama}</ThemedText>
-        <ThemedText>{lesson.description}</ThemedText>
-      </ThemedView>
+    <ThemedView style={styles.container}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+        <ThemedView style={styles.header}>
+          <ThemedText type="title">{lesson.title.Oshikwanyama}</ThemedText>
+          <ThemedText>{lesson.description}</ThemedText>
+        </ThemedView>
 
-      <ThemedText type="subtitle" style={styles.sectionHeader}>
-        Vocabulary
-      </ThemedText>
-      <VocabularySection items={lesson.vocab} />
+        <VocabularySection items={lesson.vocab} />
 
-      <ThemedText type="subtitle" style={styles.sectionHeader}>
-        Dialogs
-      </ThemedText>
-      <DialogsSection
-        items={lesson.dialogs.map((item, index) => ({
-          ...item,
-          index,
-        }))}
-      />
+        {lesson.conjugations && lesson.conjugations.length > 0 && (
+          <ConjugationTableSection table={lesson.conjugations[0]} />
+        )}
+
+        {lesson?.dialogs?.length > 0 && (
+          <ThemedText type="subtitle" style={styles.sectionHeader}>
+            {lesson?.dialogs?.length === 1 ? "Example" : "Examples"}
+          </ThemedText>
+        )}
+        <DialogsSection
+          items={lesson.dialogs.map((item, index) => ({
+            ...item,
+            index,
+          }))}
+        />
+      </ScrollView>
 
       <Pressable
         onPress={() => router.push(`/oshikwanyama/quiz/${lesson.id}`)}
-        style={({ pressed }) => [styles.button, pressed && { opacity: 0.7 }]}
+        style={({ pressed }) => [
+          styles.stickyButton,
+          pressed && { opacity: 0.7 },
+        ]}
       >
         <ThemedText>Start Quiz</ThemedText>
       </Pressable>
-    </ScrollView>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: "transparent",
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 16,
+    paddingBottom: 80, // Space for the sticky button
+  },
   header: { gap: 12, marginBottom: 16, backgroundColor: "transparent" },
   sectionHeader: { marginTop: 12, marginBottom: 8 },
-  button: {
-    padding: 10,
+  stickyButton: {
+    position: "absolute",
+    bottom: 10,
+    left: 16,
+    right: 16,
+    padding: 16,
     backgroundColor: "#A1CEDC",
-    borderRadius: 6,
+    borderRadius: 8,
     alignItems: "center",
-    marginTop: 16,
-    marginBottom: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
 });

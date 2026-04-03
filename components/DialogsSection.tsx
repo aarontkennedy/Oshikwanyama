@@ -1,11 +1,39 @@
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import type { Dialog, ExampleDialog } from "@/types/oshikwanyama";
+import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 interface DialogsSectionProps {
   items: (ExampleDialog & { index: number })[];
 }
+
+const DialogText = ({ text }: { text: string }) => {
+  const [revealed, setRevealed] = useState(false);
+  const highlighted = text.match(/\*(.+?)\*/)?.[1];
+  const displayText = highlighted
+    ? text.replace(`*${highlighted}*`, "___")
+    : text;
+
+  if (highlighted && !revealed) {
+    const parts = displayText.split("___");
+    return (
+      <ThemedText>
+        {parts[0]}
+        <ThemedText onPress={() => setRevealed(true)} style={styles.blank}>
+          ___
+        </ThemedText>
+        {parts[1]}
+      </ThemedText>
+    );
+  }
+
+  return (
+    <ThemedText>
+      {highlighted ? text.replace(/\*/g, "") : displayText}
+    </ThemedText>
+  );
+};
 
 export function DialogsSection({ items }: DialogsSectionProps) {
   return (
@@ -17,7 +45,7 @@ export function DialogsSection({ items }: DialogsSectionProps) {
           </ThemedText>
           {dialog.conversation.map((element: Dialog, lineIdx: number) => (
             <ThemedText key={lineIdx} style={styles.dialogLine}>
-              {element.speaker}: {element.text}
+              {element.speaker}: <DialogText text={element.text} />
             </ThemedText>
           ))}
         </ThemedView>
@@ -41,5 +69,8 @@ const styles = StyleSheet.create({
   dialogLine: {
     paddingLeft: 8,
     lineHeight: 20,
+  },
+  blank: {
+    textDecorationLine: "underline",
   },
 });

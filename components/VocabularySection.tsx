@@ -11,6 +11,11 @@ interface VocabularySectionProps {
 export function VocabularySection({ items }: VocabularySectionProps) {
   const [containerWidth, setContainerWidth] = useState(0);
   const columnWidth = containerWidth > 0 ? containerWidth / 2 : 150;
+
+  if (!items || items.length === 0) {
+    return null;
+  }
+
   const tableHead = ["English", "Oshikwanyama"];
   const tableData = items.map((item) => [item.English, item.Oshikwanyama]);
 
