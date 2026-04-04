@@ -1,5 +1,4 @@
 import { ThemedView } from "@/components/themed-view";
-import { ConjugationWithPositiveNegativeTable } from "@/types/oshikwanyama";
 import { ScrollView, StyleSheet } from "react-native";
 import {
   Cell,
@@ -16,63 +15,57 @@ const HEADER_HEIGHT = 48;
 const ROW_HEIGHT = 38;
 
 interface ConjugationTableProps {
-  table: ConjugationWithPositiveNegativeTable;
+  data: [string[], string[], string[]];
 }
 
-export function ConjugationTableSection(_props: ConjugationTableProps) {
-  const tableTitle2 = [
-    "+", "-", "+", "-", "+", "-", "+", "-", "+", "-", "+", "-",
+export function ConjugationTableSection({ data }: ConjugationTableProps) {
+  const pronounColumnData = ["Ame", "Ove", "Ye", "Fye", "Nye", "Vo"];
+  const positiveNegativeColumnData = [
+    "+",
+    "-",
+    "+",
+    "-",
+    "+",
+    "-",
+    "+",
+    "-",
+    "+",
+    "-",
+    "+",
+    "-",
   ];
-  const tableData2 = [
-    [
-      "Past",
-      "Onda", "Inandi",
-      "Owa", "Ino",
-      "Okwa", "Ina",
-      "Otwa", "Inatu",
-      "Omwa", "Inamu",
-      "Ova", "Inaa/Inava",
-    ],
-    [
-      "Present",
-      "Ohandi/Ohai", "Itandi",
-      "Oto", "Ito",
-      "Ota", "Ita",
-      "Ohatu", "Itatu",
-      "Otamu", "Itamu",
-      "Otaa/Otava", "Itaa/Itava",
-    ],
-    [
-      "Future",
-      "Ohandi ka", "Itandi ka",
-      "Oto ka", "Ito ka",
-      "Ota ka", "Ita ka",
-      "Ohatu ka", "Itatu ka",
-      "Otamu ka", "Itamu ka",
-      "Otaa ka/Otava ka", "Itaa ka/Itava ka",
-    ],
-  ];
+  const tableData2 = data;
 
-  const personHeights = [ROW_HEIGHT * 2, ROW_HEIGHT * 2, ROW_HEIGHT * 2, ROW_HEIGHT * 2, ROW_HEIGHT * 2, ROW_HEIGHT * 2];
+  const personHeights = [
+    ROW_HEIGHT * 2,
+    ROW_HEIGHT * 2,
+    ROW_HEIGHT * 2,
+    ROW_HEIGHT * 2,
+    ROW_HEIGHT * 2,
+    ROW_HEIGHT * 2,
+  ];
   const signHeights = Array(12).fill(ROW_HEIGHT);
   const dataHeights = [HEADER_HEIGHT, ...Array(12).fill(ROW_HEIGHT)];
 
   return (
     <ThemedView style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator>
-        <Table style={{ flexDirection: "row" }} borderStyle={{ borderWidth: 1 }}>
+        <Table
+          style={{ flexDirection: "row" }}
+          borderStyle={{ borderWidth: 1 }}
+        >
           {/* Left Wrapper: person names + +/- indicators */}
           <TableWrapper style={{ width: PERSON_COL_WIDTH + SIGN_COL_WIDTH }}>
             <Cell data="" style={styles.singleHead} />
             <TableWrapper style={{ flexDirection: "row" }}>
               <Col
-                data={["Ame", "Ove", "Ye", "Fye", "Nye", "Vo"]}
+                data={pronounColumnData}
                 style={[styles.head, { width: PERSON_COL_WIDTH }]}
                 heightArr={personHeights}
                 textStyle={styles.text}
               />
               <Col
-                data={tableTitle2}
+                data={positiveNegativeColumnData}
                 style={[styles.title, { width: SIGN_COL_WIDTH }]}
                 heightArr={signHeights}
                 textStyle={styles.titleText}

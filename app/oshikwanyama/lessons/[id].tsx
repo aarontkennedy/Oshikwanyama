@@ -44,7 +44,7 @@ export default function LessonDetail() {
         <VocabularySection items={lesson.vocab} />
 
         {lesson.conjugations && lesson.conjugations.length > 0 && (
-          <ConjugationTableSection table={lesson.conjugations[0]} />
+          <ConjugationTableSection data={lesson.conjugations} />
         )}
 
         {lesson?.dialogs?.length > 0 && (

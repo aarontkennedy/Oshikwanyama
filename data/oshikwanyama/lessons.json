@@ -813,65 +813,51 @@
     "dialogs": [],
     "questions": [],
     "conjugations": [
-      {
-        "title": "Subject Concords for Active Verbs",
-        "rows": [
-          {
-            "label": "Ame",
-            "past": "Onda",
-            "pastNegative": "Inandi",
-            "present": "Ohandi/Ohai",
-            "presentNegative": "Itandi",
-            "future": "Ohandi ka",
-            "futureNegative": "Itandi ka"
-          },
-          {
-            "label": "Ove",
-            "past": "Owa",
-            "pastNegative": "Ino",
-            "present": "Oto",
-            "presentNegative": "Ito",
-            "future": "Oto ka",
-            "futureNegative": "Ito ka"
-          },
-          {
-            "label": "Ye",
-            "past": "Okwa",
-            "pastNegative": "Ina",
-            "present": "Ota",
-            "presentNegative": "Ita",
-            "future": "Ota ka",
-            "futureNegative": "Ita ka"
-          },
-          {
-            "label": "Fye",
-            "past": "Otwa",
-            "pastNegative": "Inatu",
-            "present": "Ohatu",
-            "presentNegative": "Itatu",
-            "future": "Ohatu ka",
-            "futureNegative": "Itatu ka"
-          },
-          {
-            "label": "Nye",
-            "past": "Omwa",
-            "pastNegative": "Inamu",
-            "present": "Otamu",
-            "presentNegative": "Itamu",
-            "future": "Otamu ka",
-            "futureNegative": "Itamu ka"
-          },
-          {
-            "label": "Vo",
-            "past": "Ova",
-            "pastNegative": "Inaa/Inava",
-            "present": "Otaa/Otava",
-            "presentNegative": "Itaa/Itava",
-            "future": "Otaa/Otava ka",
-            "futureNegative": "Itaa/Itava ka"
-          }
-        ]
-      }
+      [
+        "Past",
+        "Onda",
+        "Inandi",
+        "Owa",
+        "Ino",
+        "Okwa",
+        "Ina",
+        "Otwa",
+        "Inatu",
+        "Omwa",
+        "Inamu",
+        "Ova",
+        "Inaa/Inava"
+      ],
+      [
+        "Present",
+        "Ohandi/Ohai",
+        "Itandi",
+        "Oto",
+        "Ito",
+        "Ota",
+        "Ita",
+        "Ohatu",
+        "Itatu",
+        "Otamu",
+        "Itamu",
+        "Otaa/Otava",
+        "Itaa/Itava"
+      ],
+      [
+        "Future",
+        "Ohandi ka",
+        "Itandi ka",
+        "Oto ka",
+        "Ito ka",
+        "Ota ka",
+        "Ita ka",
+        "Ohatu ka",
+        "Itatu ka",
+        "Otamu ka",
+        "Itamu ka",
+        "Otaa ka/Otava ka",
+        "Itaa ka/Itava ka"
+      ]
     ]
   }
 ]

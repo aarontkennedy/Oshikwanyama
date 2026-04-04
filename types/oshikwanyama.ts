@@ -3,33 +3,6 @@ export interface Vocab {
   Oshikwanyama: string;
 }
 
-export interface ConjugationPostiveNegativeRow {
-  label: string;
-  past: string;
-  pastNegative: string;
-  present: string;
-  presentNegative: string;
-  future: string;
-  futureNegative: string;
-}
-
-export interface ConjugationWithPositiveNegativeTable {
-  title: string;
-  rows: ConjugationPostiveNegativeRow[];
-}
-
-// export interface ConjugationRow {
-//   label: string;
-//   past: string;
-//   present: string;
-//   future: string;
-// }
-
-// export interface ConjugationTable {
-//   title: string;
-//   rows: ConjugationRow[];
-// }
-
 export interface Dialog {
   speaker: string;
   text: string;
@@ -47,7 +20,7 @@ export interface Lesson {
   questions: Question[];
   vocab: Vocab[];
   dialogs: ExampleDialog[];
-  conjugations?: null | ConjugationWithPositiveNegativeTable[];
+  conjugations?: null | [string[], string[], string[]];
 }
 
 export interface Question {
