@@ -28,6 +28,15 @@ jobs:
       - run: npm test
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:e2e
+      # The site is built and uploaded here, once everything has passed, and published by
+      # the deploy job. Deploying from the job that uploaded it could look for the upload
+      # before GitHub had listed it, and fail.
+      - run: npm run build
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+      - uses: actions/upload-pages-artifact@v5
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        with:
+          path: dist
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -49,15 +58,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: dist
       - id: deployment
         uses: actions/deploy-pages@v5
