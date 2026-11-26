@@ -1,0 +1,406 @@
+{
+  "1": [
+    {
+      "type": "multiple-choice",
+      "prompt": "Good",
+      "options": [
+        "Onawa",
+        "Nai",
+        "Eewa",
+        "ooKaume"
+      ],
+      "correct": "Onawa",
+      "explanation": ""
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Morning",
+      "options": [
+        "Ongula",
+        "Omutenya",
+        "Komatango",
+        "Onguloshi"
+      ],
+      "correct": "Ongula",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "Match the Oshikwanyama with the English",
+      "pairs": [
+        {
+          "English": "Morning",
+          "Oshikwanyama": "Ongula"
+        },
+        {
+          "English": "Afternoon (mid-day heat) ",
+          "Oshikwanyama": "Omutenya"
+        },
+        {
+          "English": "Afternoon (late afternoon) ",
+          "Oshikwanyama": "Komatango"
+        },
+        {
+          "English": "Evening",
+          "Oshikwanyama": "Onguloshi"
+        },
+        {
+          "English": "Night",
+          "Oshikwanyama": "Oufiku"
+        }
+      ]
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "Ongaipi",
+      "answer": "Hello",
+      "hint": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "Match the Oshikwanyama with the English greeting",
+      "pairs": [
+        {
+          "English": "Good morning ",
+          "Oshikwanyama": "Wa lele po?"
+        },
+        {
+          "English": "Good afternoon",
+          "Oshikwanyama": "Wa uhala po?"
+        },
+        {
+          "English": "Good evening ",
+          "Oshikwanyama": "Wa tokelwa po?"
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "prompt": "Match the Oshikwanyama with the English",
+      "pairs": [
+        {
+          "English": "Go well ",
+          "Oshikwanyama": "Enda po nawa"
+        },
+        {
+          "English": "Stay well",
+          "Oshikwanyama": "Kala po nawa"
+        },
+        {
+          "English": "Sleep well (someone leaving for bed)",
+          "Oshikwanyama": "Ka nangale po nawa"
+        },
+        {
+          "English": "Sleep well (someone you're leaving)",
+          "Oshikwanyama": "Nangala po nawa"
+        }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "What is always the correct response to a greeting?",
+      "options": [
+        "ooKaume",
+        "Ehee",
+        "Ahowe",
+        "Ongaipi"
+      ],
+      "correct": "Ehee",
+      "explanation": ""
+    },
+    {
+      "type": "ordering",
+      "prompt": "",
+      "items": [
+        "Imwe",
+        "Mbali",
+        "Nhatu",
+        "Nhee",
+        "Nhano",
+        "Hamano"
+      ]
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "Seven",
+      "answer": "Heyali",
+      "hint": ""
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "Eight",
+      "answer": "Hetatu",
+      "hint": ""
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "9",
+      "answer": "Omuwoi",
+      "hint": ""
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Omulongo",
+      "options": [
+        "1",
+        "10",
+        "100",
+        "1,000"
+      ],
+      "correct": "10",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "100",
+          "Oshikwanyama": "Efele"
+        },
+        {
+          "English": "200",
+          "Oshikwanyama": "Omafele avali"
+        },
+        {
+          "English": "300",
+          "Oshikwanyama": "Omafele atatu"
+        }
+      ]
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "1,000",
+      "answer": "Eyovi",
+      "hint": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "I'm Nangula. What's your name? ",
+          "Oshikwanyama": "Aame Nangula. Oove lye?"
+        },
+        {
+          "English": "I don't understand...",
+          "Oshikwanyama": "Kandi udite ko..."
+        },
+        {
+          "English": "I don't know ",
+          "Oshikwanyama": "Kandi shi shii"
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "I",
+          "Oshikwanyama": "Ame"
+        },
+        {
+          "English": "You",
+          "Oshikwanyama": "Ove"
+        },
+        {
+          "English": "He/She",
+          "Oshikwanyama": "Ye"
+        }
+      ]
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "Ame",
+      "answer": "I",
+      "hint": ""
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "You",
+      "options": [
+        "Ove",
+        "Ye",
+        "Fye",
+        "Nye"
+      ],
+      "correct": "Ove",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "We",
+          "Oshikwanyama": "Fye"
+        },
+        {
+          "English": "You all",
+          "Oshikwanyama": "Nye"
+        },
+        {
+          "English": "They",
+          "Oshikwanyama": "Vo"
+        }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "type": "multiple-choice",
+      "prompt": "Onda fya ondjala.",
+      "options": [
+        "I'm hungry. ",
+        "I'm thirsty. ",
+        "I'm full. ",
+        "I'm finished. "
+      ],
+      "correct": "I'm hungry. ",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "I'm hungry. ",
+          "Oshikwanyama": "Onda fya ondjala."
+        },
+        {
+          "English": "I'm thirsty. ",
+          "Oshikwanyama": "Onda fya enota."
+        },
+        {
+          "English": "I'm full. ",
+          "Oshikwanyama": "Onda kuta."
+        },
+        {
+          "English": "I'm finished. ",
+          "Oshikwanyama": "Onda mana."
+        }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Onda loloka",
+      "options": [
+        "I'm tired.",
+        "I want to go to sleep. ",
+        "Where is the water? ",
+        "I don't eat meat. "
+      ],
+      "correct": "I'm tired.",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "The food is very good!",
+          "Oshikwanyama": "Oikulya inyenye!"
+        },
+        {
+          "English": "Thank you very much. ",
+          "Oshikwanyama": "Tangi unene."
+        },
+        {
+          "English": "Where is the latrine? ",
+          "Oshikwanyama": "Okandjuwo oke li peni?"
+        }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Meat",
+      "options": [
+        "Ombelela",
+        "Obiila",
+        "Omeva",
+        "Ekwafo"
+      ],
+      "correct": "Ombelela",
+      "explanation": ""
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Where it the bathroom?",
+      "options": [
+        "Okandjuwo oke li peni?",
+        "Onda pumbwa ekwafo",
+        "Kandi shi shii",
+        "Ondi hole ombelela"
+      ],
+      "correct": "Okandjuwo oke li peni?",
+      "explanation": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "To sleep ",
+          "Oshikwanyama": "Okukofa"
+        },
+        {
+          "English": "To eat",
+          "Oshikwanyama": "Okulya"
+        },
+        {
+          "English": "To bathe",
+          "Oshikwanyama": "Okulikosha"
+        }
+      ]
+    },
+    {
+      "type": "fill-blank",
+      "prompt": "Okalexita",
+      "answer": "Candle",
+      "hint": ""
+    },
+    {
+      "type": "matching",
+      "prompt": "",
+      "pairs": [
+        {
+          "English": "And",
+          "Oshikwanyama": "Na"
+        },
+        {
+          "English": "Also",
+          "Oshikwanyama": "Natango"
+        },
+        {
+          "English": "Or",
+          "Oshikwanyama": "Ile"
+        }
+      ]
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "Onda pumbwa omeva",
+      "options": [
+        "I need water.",
+        "I want water.",
+        "I eat meat.",
+        "Give me water."
+      ],
+      "correct": "I need water.",
+      "explanation": ""
+    },
+    {
+      "type": "multiple-choice",
+      "prompt": "I want to sleep.",
+      "options": [
+        "Onda hala okukofa",
+        "Onda pumbwa okukofa",
+        "Onda hala okulikosha",
+        "Onda fya ondjala"
+      ],
+      "correct": "Onda hala okukofa",
+      "explanation": ""
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f2ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15110e" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Oshikwanyama" />
+    <meta name="description" content="A companion to Hai ti!, a beginner’s guide to Oshikwanyama: every chapter, with quizzes. Works offline." />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+    <title>Oshikwanyama</title>
+    <script>
+      // The Appearance choice (Settings), applied before anything draws so the screen
+      // never flashes the wrong colors. Same key and values as src/theme.ts.
+      try {
+        var choice = localStorage.getItem('oshikwanyama:appearance');
+        if (choice === 'light' || choice === 'dark') {
+          document.documentElement.dataset.theme = choice;
+          var bar = choice === 'dark' ? '#15110e' : '#f6f2ec';
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.content = bar; });
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript><p style="font: 20px/1.4 system-ui, sans-serif; padding: 16px">Oshikwanyama needs JavaScript. Turn it on in your browser’s settings, then reload this page.</p></noscript>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

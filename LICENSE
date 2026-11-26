@@ -1,0 +1,22 @@
+Lesson content
+--------------
+The lessons, word lists, Grammar Corners, proverbs, songs and exercises in src/book/ are
+adapted from "Hai ti! A Beginner's Guide to Oshikwanyama", Copyright (c) 2004 Thera Crane,
+Karl Lindgren-Streicher and Andy Wingo, licensed under the Creative Commons
+Attribution-ShareAlike 2.0 licence (https://creativecommons.org/licenses/by-sa/2.0/).
+
+This adaptation (everything in src/book/, and the quiz questions made from it) is licensed
+under the Creative Commons Attribution-ShareAlike 4.0 International licence
+(https://creativecommons.org/licenses/by-sa/4.0/). Changes from the book are listed in
+docs/CONTENT.md.
+
+The app
+-------
+Copyright (c) 2026 aarontkennedy. All rights reserved.
+
+Everything else in this repository (the app's code, design and icons) is public only so the
+app can be hosted on GitHub Pages. No license is granted to copy, modify, distribute, or
+create derivative works from it.
+
+Third-party components keep their own licenses; see THIRD_PARTY_NOTICES.txt in the public/
+folder.
